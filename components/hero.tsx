@@ -1,14 +1,11 @@
 "use client";
-
 import { useState } from "react";
 import { siteConfig } from "@/lib/site-config";
-
 export function Hero() {
   // Until a real /public/videos/hero.mp4 exists, the <video> tag has no
   // playable source. Hide it on error so the gradient fallback shows
   // instead of an empty black box — remove this once real assets are in.
   const [videoFailed, setVideoFailed] = useState(false);
-
   return (
     <section className="relative flex h-[100svh] min-h-[560px] w-full items-end overflow-hidden bg-ink">
       {/*
@@ -35,18 +32,17 @@ export function Hero() {
       >
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
-
-      {/* Fallback gradient shown until a real poster/video is added */}
-      <div
-        className="absolute inset-0 bg-[radial-gradient(120%_120%_at_20%_0%,#2E5266_0%,#16283A_55%,#0E1B27_100%)]"
-        aria-hidden="true"
-      />
-
+      {/* Fallback gradient — only shown if the video fails to load */}
+      {videoFailed && (
+        <div
+          className="absolute inset-0 bg-[radial-gradient(120%_120%_at_20%_0%,#2E5266_0%,#16283A_55%,#0E1B27_100%)]"
+          aria-hidden="true"
+        />
+      )}
       <div
         className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10"
         aria-hidden="true"
       />
-
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-32 sm:pb-20">
         <p className="eyebrow mb-5 text-azure-soft">
           {siteConfig.address.addressLocality} · Private Staycation
@@ -58,7 +54,6 @@ export function Hero() {
           A comfortable private space designed for relaxed weekends, quality
           time, and little celebrations — booked directly, no surprises.
         </p>
-
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <a
             href="#book"
@@ -74,7 +69,6 @@ export function Hero() {
           </a>
         </div>
       </div>
-
       {/* Scroll cue */}
       <div className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 animate-bob sm:block">
         <svg width="20" height="28" viewBox="0 0 20 28" fill="none" aria-hidden="true">
