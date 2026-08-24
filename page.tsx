@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero";
+import { GuestTypes } from "@/components/guest-types";
 import { ExperiencePicker } from "@/components/experience-picker";
 import { SpaceShowcase } from "@/components/space-showcase";
 import { Amenities } from "@/components/amenities";
@@ -11,7 +12,8 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <ExperiencePicker />
+<GuestTypes />
+<ExperiencePicker />
       <SpaceShowcase />
       <div id="amenities">
         <Amenities />
