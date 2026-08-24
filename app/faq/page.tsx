@@ -56,11 +56,11 @@ export default function FaqPage() {
         Questions, answered.
       </h1>
 
-      <dl className="mt-12 divide-y divide-ink/10">
+      <dl className="mt-12 divide-y divide-ivory/10">
         {faqs.map((faq) => (
           <div key={faq.question} className="py-6">
-            <dt className="font-display text-lg text-ink">{faq.question}</dt>
-            <dd className="mt-2 text-sm leading-relaxed text-ink/65">{faq.answer}</dd>
+            <dt className="font-display text-lg text-ivory">{faq.question}</dt>
+            <dd className="mt-2 text-sm leading-relaxed text-ivory/65">{faq.answer}</dd>
           </div>
         ))}
       </dl>

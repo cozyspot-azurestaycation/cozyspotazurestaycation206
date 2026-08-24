@@ -16,7 +16,7 @@ export default function OgImage() {
           justifyContent: "flex-end",
           padding: 80,
           background:
-            "radial-gradient(120% 120% at 15% 0%, #2E5266 0%, #16283A 55%, #0E1B27 100%)",
+            "radial-gradient(120% 120% at 15% 0%, #1D4058 0%, #0F2538 55%, #081420 100%)",
         }}
       >
         <div
@@ -25,7 +25,7 @@ export default function OgImage() {
             fontSize: 22,
             letterSpacing: 6,
             textTransform: "uppercase",
-            color: "#7FA8B3",
+            color: "#B8C3CC",
             fontFamily: "monospace",
           }}
         >
@@ -36,7 +36,7 @@ export default function OgImage() {
             display: "flex",
             marginTop: 24,
             fontSize: 64,
-            color: "#EFEAE0",
+            color: "#F5F1E8",
             fontFamily: "serif",
             maxWidth: 900,
             lineHeight: 1.05,
