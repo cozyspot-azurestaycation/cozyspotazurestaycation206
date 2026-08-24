@@ -212,14 +212,15 @@ export function Reviews() {
 
           </div>
 
-          {/* Full Reviews Button */}
-          <a
-            href="https://azurestaycationbysiaos.com/reviews"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex rounded-full bg-gold px-7 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-lg"
-          >
-            What our clients say about us
+         {/* Full Reviews Button */}
+<a
+  href="/reviews"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-8 inline-flex rounded-full bg-gold px-7 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-lg"
+>
+  What our clients say about us
+</a>
           </a>
 
         </div>
