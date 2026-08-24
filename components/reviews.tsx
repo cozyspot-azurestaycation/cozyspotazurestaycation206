@@ -69,7 +69,7 @@ export function Reviews() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((current) => (current + 1) % reviews.length);
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(timer);
   }, []);
