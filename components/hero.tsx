@@ -51,8 +51,9 @@ export function Hero() {
           {siteConfig.tagline}
         </h1>
         <p className="mt-6 max-w-md text-[15px] leading-relaxed text-linen/75">
-          A comfortable private space designed for relaxed weekends, quality
-          time, and little celebrations — booked directly, no surprises.
+          A private staycation space near airport, 
+          designed for relaxation, quality time, and intimate celebrations. 
+          Perfect for couples, families, and small groups looking for a comfortable place to stay and unwind.
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <a
