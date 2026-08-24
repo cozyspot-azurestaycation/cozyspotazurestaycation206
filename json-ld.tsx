@@ -1,26 +1,39 @@
 import { siteConfig } from "@/lib/site-config";
 
 /**
- * LodgingBusiness structured data — this is the main GEO/LLM + SEO signal
- * telling search engines and AI answer engines what this business is,
- * where it is, and how to book it. Rendered once, in the root layout.
+ * Main structured data for Cozy Spot Azure.
  *
- * NOTE: aggregateRating is intentionally omitted. Only add it once you
- * have a real, verifiable review count/score — fabricated ratings are
- * both a policy violation and the fastest way to lose guest trust.
+ * Helps search engines and AI systems understand:
+ * - what Cozy Spot Azure is
+ * - where it is located
+ * - how guests can contact/book
+ * - the type of accommodation
+ *
+ * No fabricated ratings or review scores are included.
  */
+
 export function LodgingBusinessJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
+
+    "@id": `${siteConfig.url}#cozy-spot-azure`,
+
     name: siteConfig.name,
+    alternateName: siteConfig.shortName,
+
     description: siteConfig.description,
+
     url: siteConfig.url,
+
     telephone: siteConfig.phone,
     email: siteConfig.email,
+
     priceRange: siteConfig.priceRange,
+
     checkinTime: siteConfig.checkInTime,
     checkoutTime: siteConfig.checkOutTime,
+
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.streetAddress,
@@ -29,22 +42,64 @@ export function LodgingBusinessJsonLd() {
       postalCode: siteConfig.address.postalCode,
       addressCountry: siteConfig.address.addressCountry,
     },
+
     geo: {
       "@type": "GeoCoordinates",
       latitude: siteConfig.geo.latitude,
       longitude: siteConfig.geo.longitude,
     },
-    sameAs: [siteConfig.facebookUrl, siteConfig.instagramUrl].filter(Boolean),
+
+    areaServed: {
+      "@type": "City",
+      name: "Parañaque City",
+    },
+
+    amenityFeature: [
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Private accommodation",
+        value: true,
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Wi-Fi",
+        value: true,
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Kitchen essentials",
+        value: true,
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Room surprise setup",
+        value: true,
+      },
+    ],
+
+    sameAs: [
+      siteConfig.facebookUrl,
+      siteConfig.instagramUrl,
+    ].filter(Boolean),
   };
 
   return (
     <script
       type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data),
+      }}
     />
   );
 }
+
+
+/**
+ * FAQ structured data.
+ *
+ * Used on the FAQ page so search engines can understand
+ * the questions and answers presented to guests.
+ */
 
 export function FaqJsonLd({
   items,
@@ -54,9 +109,12 @@ export function FaqJsonLd({
   const data = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+
     mainEntity: items.map((item) => ({
       "@type": "Question",
+
       name: item.question,
+
       acceptedAnswer: {
         "@type": "Answer",
         text: item.answer,
@@ -67,11 +125,20 @@ export function FaqJsonLd({
   return (
     <script
       type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data),
+      }}
     />
   );
 }
+
+
+/**
+ * Breadcrumb structured data.
+ *
+ * Helps search engines understand the hierarchy
+ * between pages on the website.
+ */
 
 export function BreadcrumbJsonLd({
   items,
@@ -81,10 +148,14 @@ export function BreadcrumbJsonLd({
   const data = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, i) => ({
+
+    itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
-      position: i + 1,
+
+      position: index + 1,
+
       name: item.name,
+
       item: item.url,
     })),
   };
@@ -92,8 +163,9 @@ export function BreadcrumbJsonLd({
   return (
     <script
       type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(data),
+      }}
     />
   );
 }
