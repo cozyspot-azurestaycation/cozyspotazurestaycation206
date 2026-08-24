@@ -15,11 +15,11 @@ export function UnitDescription() {
           id="unit-description-heading"
           className="max-w-2xl font-display text-4xl font-medium leading-tight text-ink sm:text-5xl"
         >
-          A 1BR Beachfront Unit, Built for Relaxed Weekends
+          A 1 Bedroom Beachfront Unit
         </h2>
 
         <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink/80 sm:text-base">
-          Enjoy a relaxing staycation in our 1BR Beachfront unit, complete
+          Enjoy a relaxing staycation in our 1 Bedroom Beachfront unit, complete
           with a PS4, billiards table, videoke, Netflix, YouTube, and board
           and card games for the whole group. The unit comfortably
           accommodates up to <strong className="font-medium text-ink">4 guests</strong>.
