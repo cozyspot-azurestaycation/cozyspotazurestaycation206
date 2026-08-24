@@ -11,87 +11,85 @@ export function LocationSection() {
   return (
     <section
       id="location"
-      className="bg-ink py-20 text-linen sm:py-28"
+      className="bg-ink py-12 text-linen sm:py-16"
     >
       <div className="mx-auto max-w-6xl px-5">
 
-        {/* Section heading */}
+        {/* Heading */}
         <div className="max-w-2xl">
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-brass">
+          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-brass">
             Find Us
           </p>
 
-          <h2 className="mt-4 max-w-xl font-display text-3xl font-medium leading-tight text-linen sm:text-5xl">
+          <h2 className="mt-2 max-w-xl font-display text-3xl font-medium leading-tight text-linen sm:text-4xl">
             Your Cozy Spot in Parañaque.
           </h2>
 
-          <p className="mt-5 max-w-xl text-sm leading-relaxed text-linen/65 sm:text-base">
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-linen/60">
             Cozy Spot is a private staycation accommodation located inside
             Azure Urban Resort Residences in Parañaque, Metro Manila.
           </p>
         </div>
 
-        {/* Location content */}
-        <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-[1.25fr_0.75fr]">
+        {/* Location */}
+        <div className="mt-6 grid grid-cols-1 items-center gap-4 md:grid-cols-[1.3fr_0.7fr]">
 
           {/* LEFT — Address */}
-          <div className="border-2 border-linen/90 p-7 sm:p-8 lg:p-9">
+          <div className="border-2 border-linen/90 p-5 sm:p-6">
 
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-linen/70">
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-linen/65">
               COZY SPOT
             </p>
 
-            <h3 className="mt-6 font-display text-2xl font-medium text-linen sm:text-3xl">
+            <h3 className="mt-2 font-display text-2xl font-medium text-linen">
               Azure Urban Resort Residences
             </h3>
 
-            <p className="mt-2 text-sm font-medium text-linen/80">
+            <p className="mt-1 text-sm text-linen/75">
               Santorini Tower · Unit 206
             </p>
 
-            <div className="my-8 h-px bg-linen/40" />
+            {/* Line */}
+            <div className="my-4 h-px bg-linen/30" />
 
-            <p className="max-w-xl text-sm leading-relaxed text-linen/80">
+            <p className="max-w-xl text-sm leading-relaxed text-linen/75">
               {address}
             </p>
 
             {/* Contact */}
-            <div className="mt-8 border-t border-linen/30 pt-6">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-linen/50">
+            <div className="mt-4 border-t border-linen/20 pt-3">
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-linen/40">
                 CONTACT
               </p>
 
               <a
                 href="tel:+639983639683"
-                className="mt-3 inline-block text-base font-medium text-linen underline decoration-linen/40 underline-offset-4 transition-colors hover:text-brass"
+                className="mt-1 inline-block text-sm font-medium text-linen underline decoration-linen/30 underline-offset-4 hover:text-brass"
               >
                 0998 363 9683
               </a>
             </div>
 
             {/* Directions */}
-            <div className="mt-10">
-              <a
-                href={mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-sm font-medium text-linen transition-colors hover:text-brass"
-              >
-                Get Directions
-                <span className="ml-2">→</span>
-              </a>
-            </div>
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex text-sm font-medium text-linen transition-colors hover:text-brass"
+            >
+              Get Directions →
+            </a>
           </div>
 
-          {/* RIGHT — GOOGLE MAP */}
-          <div className="relative flex items-center justify-center">
+          {/* RIGHT — SMALL GOOGLE MAP */}
+          <div className="flex justify-center md:justify-end">
 
             <div
-              className="relative aspect-square w-full max-w-[400px] overflow-hidden border-2 border-linen/90"
+              className="relative h-[240px] w-[240px] overflow-hidden border-2 border-linen/90 sm:h-[260px] sm:w-[260px]"
               aria-label="Google Maps location of Cozy Spot at Azure Urban Resort Residences"
             >
 
-              {/* Google Maps background */}
+              {/* Google Maps */}
               <iframe
                 src={mapEmbedUrl}
                 title="Cozy Spot location at Azure Urban Resort Residences"
@@ -100,29 +98,19 @@ export function LocationSection() {
                 referrerPolicy="no-referrer-when-downgrade"
               />
 
-              {/* Dark overlay for premium look */}
-              <div
-                className="pointer-events-none absolute inset-0 bg-ink/10"
-                aria-hidden="true"
-              />
+              {/* Simple location label — NO BLUR */}
+              <div className="absolute bottom-2 left-2 right-2 border border-linen/40 bg-ink/90 px-2 py-2 text-center">
 
-              {/* Cozy Spot location card */}
-              <div className="absolute bottom-5 left-5 right-5 border border-linen/30 bg-ink/90 p-5 text-center shadow-xl backdrop-blur-sm">
-
-                <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-brass">
-                  COZY SPOT
+                <p className="font-display text-sm font-medium text-linen">
+                  Cozy Spot
                 </p>
 
-                <h3 className="mt-2 font-display text-xl font-medium text-linen">
-                  Azure Urban Resort Residences
-                </h3>
-
-                <p className="mt-1 text-xs text-linen/70">
+                <p className="mt-0.5 text-[10px] text-linen/70">
                   Unit 206 · Santorini Tower
                 </p>
 
-                <p className="mt-1 text-xs text-linen/60">
-                  Parañaque, Metro Manila
+                <p className="text-[10px] text-linen/60">
+                  Azure Urban Resort Residences
                 </p>
 
               </div>
@@ -131,9 +119,9 @@ export function LocationSection() {
           </div>
         </div>
 
-        {/* Bottom information */}
-        <div className="mt-10 border-t border-linen/20 pt-6">
-          <div className="flex flex-col gap-2 text-xs text-linen/40 sm:flex-row sm:items-center sm:justify-between">
+        {/* Bottom line */}
+        <div className="mt-5 border-t border-linen/15 pt-3">
+          <div className="flex flex-col gap-1 text-[11px] text-linen/35 sm:flex-row sm:items-center sm:justify-between">
             <span>
               Azure Urban Resort Residences · Parañaque, Metro Manila
             </span>
