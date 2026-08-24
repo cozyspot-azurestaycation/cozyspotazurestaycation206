@@ -25,7 +25,7 @@ export function UnitDescription() {
           accommodates up to <strong className="font-medium text-ink">4 guests</strong>.
         </p>
 
-        <div className="mt-12 grid gap-10 sm:grid-cols-2">
+        <div className="mt-12">
           {/* Inclusions */}
           <div>
             <h3 className="font-display text-xl font-medium text-ink">
@@ -76,32 +76,14 @@ export function UnitDescription() {
               </li>
             </ul>
           </div>
-
-          {/* Building Amenities */}
-          <div>
-            <h3 className="font-display text-xl font-medium text-ink">
-              Building Amenities
-            </h3>
-            <ul className="mt-4 space-y-3 text-[15px] leading-relaxed text-ink/80">
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-azure" aria-hidden="true" />
-                Man-made beach
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-azure" aria-hidden="true" />
-                Wave pool
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-azure" aria-hidden="true" />
-                Kiddie pool and kiddie playground pool
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-azure" aria-hidden="true" />
-                Roof deck viewing area
-              </li>
-            </ul>
-          </div>
         </div>
+
+        {/* Cooking Disclaimer */}
+        <p className="mt-8 max-w-2xl text-sm italic leading-relaxed text-ink/60">
+          Please note: the unit is equipped for light cooking only (e.g.
+          reheating, boiling, or simple stovetop meals). Heavy or open-flame
+          cooking is not permitted inside the unit.
+        </p>
       </div>
     </section>
   );
