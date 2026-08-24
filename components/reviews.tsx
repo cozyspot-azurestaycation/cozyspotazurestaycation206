@@ -33,7 +33,7 @@ const reviews = [
     date: "May 2025",
     image: "/images/reviews/maricon.jpg",
     review:
-      "Thank you for accommodating us! We're able to celebrate our son's 2nd birthday in your cozy home. It is highly recommended for everyone who are looking for a place to have fun and relaxation. We would surely booked again.",
+      "Thank you for accommodating us! We're able to celebrate our son's 2nd birthday in your cozy home. It is highly recommended for everyone who are looking for a place to have fun and relaxation. We would surely book again.",
   },
   {
     name: "Maica",
@@ -41,7 +41,7 @@ const reviews = [
     date: "November 2025",
     image: "/images/reviews/maica.jpg",
     review:
-      "Great place to stay! Sir Pj was very easy to talk to, especially when we rescheduled because of the typhoon, he was very accommodating... the place was also nice, it was very worth it from check-in to check-out!",
+      "Great place to stay! Sir Pj was very easy to talk to, especially when we rescheduled because of the typhoon, he was very accommodating. The place was also nice, it was very worth it from check-in to check-out!",
   },
   {
     name: "Charles Albert",
@@ -102,12 +102,11 @@ export function Reviews() {
         {/* Review Slideshow */}
         <div className="mt-10 flex flex-col items-center">
 
-          {/* Review Box */}
+          {/* Review Card */}
           <article
             key={activeIndex}
-            className="w-full max-w-3xl rounded-2xl border border-ivory/70 bg-navy px-6 py-7 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] animate-review-in sm:px-9 sm:py-8"
+            className="animate-review-in w-full max-w-3xl rounded-2xl border border-ivory/70 bg-navy px-6 py-7 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] sm:px-9 sm:py-8"
           >
-
             {/* Guest Header */}
             <div className="flex items-start justify-between gap-4">
 
@@ -142,13 +141,19 @@ export function Reviews() {
             </div>
 
             {/* Stars */}
-            <div className="mt-5 flex items-center gap-1 text-lg leading-none text-gold">
+            <div
+              className="mt-5 flex items-center gap-1 text-lg leading-none text-gold"
+              aria-label="5 out of 5 stars"
+            >
               ★★★★★
             </div>
 
-            {/* Quote */}
+            {/* Review */}
             <div className="mt-5">
-              <span className="font-display text-5xl leading-none text-gold">
+              <span
+                className="font-display text-5xl leading-none text-gold"
+                aria-hidden="true"
+              >
                 “
               </span>
 
@@ -157,7 +162,7 @@ export function Reviews() {
               </p>
             </div>
 
-            {/* Review counter */}
+            {/* Review Counter */}
             <div className="mt-6 flex items-center justify-between border-t border-ivory/10 pt-4">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-ivory/35">
                 Guest experience
@@ -170,7 +175,7 @@ export function Reviews() {
             </div>
           </article>
 
-          {/* Controls */}
+          {/* Slideshow Controls */}
           <div className="mt-6 flex items-center gap-5">
 
             {/* Previous */}
@@ -212,15 +217,14 @@ export function Reviews() {
 
           </div>
 
-         {/* Full Reviews Button */}
-<a
-  href="/reviews"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="mt-8 inline-flex rounded-full bg-gold px-7 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-lg"
->
-  What our clients say about us
-</a>
+          {/* Full Reviews Button */}
+          <a
+            href="/reviews"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex rounded-full bg-gold px-7 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-lg"
+          >
+            What our clients say about us
           </a>
 
         </div>
