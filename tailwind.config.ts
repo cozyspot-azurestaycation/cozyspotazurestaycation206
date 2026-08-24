@@ -9,30 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // "Night azure" — deep navy-teal ink. Primary dark surface & headings.
-        ink: {
-          DEFAULT: "#16283A",
-          light: "#20374C",
+        // Navy — primary surface family. Everything sits on one of these three.
+        navy: {
+          DEFAULT: "#0F2538", // primary background
+          mid: "#16344A",     // secondary background (section alternation)
+          light: "#1D4058",   // card / panel surface, lightest step
         },
-        // Mid azure — links, secondary accents, icon strokes.
-        azure: {
-          DEFAULT: "#2E5266",
-          soft: "#7FA8B3",
-          mist: "#DCE7E9",
+        // Warm off-white — primary text on navy.
+        ivory: "#F5F1E8",
+        // Muted blue-gray — secondary/supporting text, eyebrow labels.
+        mist: "#B8C3CC",
+        // Gold — the sparing accent. Primary CTAs, links, highlights only.
+        gold: {
+          DEFAULT: "#C89B3C",
+          dark: "#A67F2E",
+          light: "#D9B463",
         },
-        // Linen — warm neutral backgrounds (not paper-white, not cream-cliché).
-        linen: {
-          DEFAULT: "#EFEAE0",
-          dark: "#E3DCC9",
-        },
-        // Brass — warm lamplight accent for CTAs & the stamp signature.
-        brass: {
-          DEFAULT: "#B8863B",
-          dark: "#8F6528",
-          light: "#D9AE6C",
-        },
-        charcoal: "#23201B",
-        cloud: "#FFFFFF",
       },
       fontFamily: {
         display: ["var(--font-fraunces)", "ui-serif", "Georgia", "serif"],
@@ -62,8 +54,9 @@ const config: Config = {
         "ken-burns": "ken-burns 14s ease-out both",
       },
       boxShadow: {
-        card: "0 1px 2px rgba(22,40,58,0.06), 0 12px 32px -12px rgba(22,40,58,0.18)",
-        stamp: "0 2px 0 rgba(184,134,59,0.35)",
+        // Dark-UI elevation: a faint top highlight + a deep, soft drop shadow.
+        card: "0 1px 0 rgba(245,241,232,0.05), 0 20px 40px -20px rgba(0,0,0,0.55)",
+        stamp: "0 2px 0 rgba(200,155,60,0.35)",
       },
     },
   },
