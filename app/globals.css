@@ -7,19 +7,19 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-linen text-charcoal antialiased;
+    @apply bg-navy text-ivory antialiased;
     font-feature-settings: "ss01" 1, "kern" 1;
   }
   ::selection {
-    @apply bg-brass/30 text-ink;
+    @apply bg-gold/30 text-navy;
   }
   :focus-visible {
-    outline: 2px solid #B8863B;
+    outline: 2px solid #C89B3C;
     outline-offset: 3px;
     border-radius: 2px;
   }
   h1, h2, h3, h4 {
-    @apply font-display text-ink;
+    @apply font-display text-ivory;
   }
 }
 
@@ -30,7 +30,7 @@
   /* so it never needs an image asset.                                    */
   .ticket-stub {
     position: relative;
-    background: #fff;
+    background: #1D4058; /* navy-light card surface */
     border-radius: 18px;
   }
   .ticket-stub::before {
@@ -38,12 +38,12 @@
     position: absolute;
     inset: 0;
     border-radius: 18px;
-    box-shadow: 0 1px 2px rgba(22,40,58,0.06), 0 20px 40px -20px rgba(22,40,58,0.35);
+    box-shadow: 0 1px 0 rgba(245,241,232,0.05), 0 24px 48px -20px rgba(0,0,0,0.6);
     pointer-events: none;
   }
   .ticket-perforation {
     height: 0;
-    border-top: 2px dashed rgba(22,40,58,0.18);
+    border-top: 2px dashed rgba(245,241,232,0.16);
     position: relative;
   }
   .ticket-perforation::before,
@@ -54,14 +54,14 @@
     width: 22px;
     height: 22px;
     border-radius: 999px;
-    background: #EFEAE0; /* matches page bg so it "punches" the card */
+    background: #0F2538; /* matches page bg so it "punches" the card */
   }
   .ticket-perforation::before { left: -11px; }
   .ticket-perforation::after { right: -11px; }
 
   /* Rotated circular "verified" stamp badge */
   .stamp-badge {
-    @apply relative inline-flex h-24 w-24 shrink-0 items-center justify-center rounded-full border-2 border-brass text-brass;
+    @apply relative inline-flex h-24 w-24 shrink-0 items-center justify-center rounded-full border-2 border-gold text-gold;
     transform: rotate(-9deg);
   }
   .stamp-badge svg {
@@ -72,13 +72,13 @@
   }
 
   .nav-blur {
-    background: rgba(239, 234, 224, 0.72);
+    background: rgba(15, 37, 56, 0.78);
     backdrop-filter: saturate(160%) blur(14px);
     -webkit-backdrop-filter: saturate(160%) blur(14px);
   }
 
   .eyebrow {
-    @apply font-mono text-[11px] uppercase tracking-widest2 text-azure;
+    @apply font-mono text-[11px] uppercase tracking-widest2 text-mist;
   }
 }
 
