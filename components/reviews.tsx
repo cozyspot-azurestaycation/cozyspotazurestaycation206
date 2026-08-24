@@ -1,4 +1,4 @@
-export function GuestReviews() {
+export function Reviews() {
   return (
     <section
       id="reviews"
@@ -22,7 +22,7 @@ export function GuestReviews() {
           </p>
         </div>
 
-        {/* Guest review artwork — NO BOX */}
+        {/* Guest review artwork */}
         <div className="mt-5 w-full">
           <img
             src="/images/reviews-guests.png"
