@@ -26,8 +26,8 @@ export function Nav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[padding,box-shadow] duration-300 ${
-          scrolled ? "nav-blur shadow-[0_1px_0_rgba(22,40,58,0.08)]" : "bg-transparent"
+        className={`fixed inset-x-0 top-0 z-50 transition-[padding,box-shadow,background-color] duration-300 ${
+          scrolled ? "nav-blur shadow-[0_1px_0_rgba(245,241,232,0.08)]" : "bg-ink/25 backdrop-blur-sm"
         }`}
       >
         <div
@@ -37,7 +37,7 @@ export function Nav() {
         >
           <Link
             href="/"
-            className="font-display text-[15px] font-medium tracking-tight text-ink"
+            className="font-display text-[15px] font-medium tracking-tight text-linen"
             onClick={() => setMenuOpen(false)}
           >
             {siteConfig.shortName}
@@ -48,7 +48,7 @@ export function Nav() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[13px] font-medium text-ink/70 transition-colors hover:text-ink"
+                className="text-[13px] font-medium text-linen/75 transition-colors hover:text-linen"
               >
                 {item.label}
               </Link>
@@ -57,13 +57,13 @@ export function Nav() {
               href={siteConfig.airbnbUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] font-medium text-ink/70 transition-colors hover:text-ink"
+              className="text-[13px] font-medium text-linen/75 transition-colors hover:text-linen"
             >
               Airbnb
             </a>
             <a
               href="#book"
-              className="rounded-full bg-ink px-4 py-1.5 text-[13px] font-medium text-linen transition-colors hover:bg-azure"
+              className="rounded-full bg-brass px-4 py-1.5 text-[13px] font-medium text-ink transition-colors hover:bg-brass-light"
             >
               Book Now
             </a>
@@ -78,12 +78,12 @@ export function Nav() {
           >
             <span className="relative block h-4 w-5">
               <span
-                className={`absolute left-0 top-0 h-[1.5px] w-5 bg-ink transition-transform duration-300 ${
+                className={`absolute left-0 top-0 h-[1.5px] w-5 bg-linen transition-transform duration-300 ${
                   menuOpen ? "translate-y-[7px] rotate-45" : ""
                 }`}
               />
               <span
-                className={`absolute left-0 bottom-0 h-[1.5px] w-5 bg-ink transition-transform duration-300 ${
+                className={`absolute left-0 bottom-0 h-[1.5px] w-5 bg-linen transition-transform duration-300 ${
                   menuOpen ? "-translate-y-[7px] -rotate-45" : ""
                 }`}
               />
@@ -130,3 +130,4 @@ export function Nav() {
     </>
   );
 }
+
