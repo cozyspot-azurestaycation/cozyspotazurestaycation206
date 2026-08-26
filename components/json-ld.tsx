@@ -21,6 +21,7 @@ export function LodgingBusinessJsonLd() {
     priceRange: siteConfig.priceRange,
     checkinTime: siteConfig.checkInTime,
     checkoutTime: siteConfig.checkOutTime,
+    foundingDate: `${siteConfig.foundingYear}`,
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address.streetAddress,
@@ -34,7 +35,12 @@ export function LodgingBusinessJsonLd() {
       latitude: siteConfig.geo.latitude,
       longitude: siteConfig.geo.longitude,
     },
-    sameAs: [siteConfig.facebookUrl, siteConfig.instagramUrl].filter(Boolean),
+    sameAs: [
+      siteConfig.facebookUrl,
+      siteConfig.instagramUrl,
+      siteConfig.airbnbUrl,
+      siteConfig.viberUrl,
+    ].filter(Boolean),
   };
 
   return (

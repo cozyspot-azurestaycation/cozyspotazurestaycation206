@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { ViberQr } from "@/components/viber-qr";
 
 export function Footer() {
   return (
@@ -9,6 +10,8 @@ export function Footer() {
           <p className="font-display text-lg">{siteConfig.shortName}</p>
           <p className="mt-2 text-xs leading-relaxed text-ink/55">
             {siteConfig.address.streetAddress}
+            <br />
+            {siteConfig.address.floorAndView}
             <br />
             {siteConfig.address.addressLocality}, {siteConfig.address.addressRegion}
           </p>
@@ -36,7 +39,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={`tel:${siteConfig.phone}`} className="hover:text-ink">
+              <a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`} className="hover:text-ink">
                 {siteConfig.phone}
               </a>
             </li>
@@ -56,13 +59,23 @@ export function Footer() {
                 Instagram
               </a>
             </li>
+            <li>
+              <a href={siteConfig.airbnbUrl} target="_blank" rel="noopener noreferrer" className="hover:text-ink">
+                Airbnb
+              </a>
+            </li>
           </ul>
         </div>
       </div>
 
-      <p className="mx-auto mt-12 max-w-6xl font-mono text-[11px] text-ink/40">
-        © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-      </p>
+      <div className="mx-auto mt-12 flex max-w-6xl flex-col-reverse items-start justify-between gap-8 sm:flex-row sm:items-end">
+        <p className="font-mono text-[11px] text-ink/40">
+          © {new Date().getFullYear()} {siteConfig.name}. Operating since{" "}
+          {siteConfig.foundingYear}. All rights reserved.
+        </p>
+
+        <ViberQr />
+      </div>
     </footer>
   );
 }

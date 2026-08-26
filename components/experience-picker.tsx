@@ -1,28 +1,30 @@
+import { Heart, PartyPopper, Infinity as InfinityIcon, Users, Coffee } from "lucide-react";
+
 const reasons = [
   {
     label: "Couples' Getaway",
     detail: "A private space to reconnect, relax, and enjoy time together.",
-    glyph: "◐",
+    Icon: Heart,
   },
   {
     label: "Birthday Celebration",
     detail: "Celebrate somewhere private, comfortable, and memorable.",
-    glyph: "✳",
+    Icon: PartyPopper,
   },
   {
     label: "Anniversary",
     detail: "Make your special day feel a little more special.",
-    glyph: "∞",
+    Icon: InfinityIcon,
   },
   {
     label: "Family Stay",
     detail: "Spend quality time together without going far.",
-    glyph: "▢",
+    Icon: Users,
   },
   {
     label: "Just Need a Break",
     detail: "Slow down, switch off, and simply enjoy your stay.",
-    glyph: "⌒",
+    Icon: Coffee,
   },
 ];
 
@@ -57,10 +59,10 @@ export function ExperiencePicker() {
           >
             <div className="flex items-start justify-between">
               <span
-                className="font-display text-2xl text-brass transition-transform duration-300 group-hover:scale-110"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-brass/10 text-brass transition-transform duration-300 group-hover:scale-110"
                 aria-hidden="true"
               >
-                {r.glyph}
+                <r.Icon size={20} strokeWidth={1.75} />
               </span>
 
               <span

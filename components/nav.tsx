@@ -54,6 +54,14 @@ export function Nav() {
               </Link>
             ))}
             <a
+              href={siteConfig.airbnbUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[13px] font-medium text-ink/70 transition-colors hover:text-ink"
+            >
+              Airbnb
+            </a>
+            <a
               href="#book"
               className="rounded-full bg-ink px-4 py-1.5 text-[13px] font-medium text-linen transition-colors hover:bg-azure"
             >
@@ -101,6 +109,15 @@ export function Nav() {
               {item.label}
             </Link>
           ))}
+          <a
+            href={siteConfig.airbnbUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="font-display text-3xl text-ink"
+          >
+            Airbnb
+          </a>
           <a
             href="#book"
             onClick={() => setMenuOpen(false)}
