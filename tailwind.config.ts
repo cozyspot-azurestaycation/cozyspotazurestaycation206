@@ -25,6 +25,30 @@ const config: Config = {
           dark: "#A67F2E",
           light: "#D9B463",
         },
+
+        // --- Aliases -----------------------------------------------------
+        // Some components use this second naming scheme (ink/linen/brass/
+        // azure/cloud) for the same palette. Both names are kept so every
+        // component renders correctly regardless of which set it uses.
+        ink: {
+          DEFAULT: "#0F2538",
+          mid: "#16344A",
+          light: "#1D4058",
+        },
+        linen: {
+          DEFAULT: "#F5F1E8",
+          dark: "#EAE1CC",
+        },
+        brass: {
+          DEFAULT: "#C89B3C",
+          dark: "#A67F2E",
+          light: "#D9B463",
+        },
+        azure: {
+          DEFAULT: "#3E7CA6",
+          soft: "#9CC2DC",
+        },
+        cloud: "#FBF9F3",
       },
       fontFamily: {
         display: ["var(--font-fraunces)", "ui-serif", "Georgia", "serif"],
