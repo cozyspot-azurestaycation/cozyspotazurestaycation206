@@ -7,11 +7,18 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-navy text-ivory antialiased;
+    @apply bg-linen text-ink antialiased;
     font-feature-settings: "ss01" 1, "kern" 1;
   }
   ::selection {
-    @apply bg-gold/30 text-navy;
+    @apply bg-brass/30 text-ink;
+  }
+  /* Prevent native date/number inputs from forcing horizontal overflow
+     on narrow phones (iOS in particular renders these wider than the
+     box-sizing width would suggest). */
+  input {
+    min-width: 0;
+    max-width: 100%;
   }
   :focus-visible {
     outline: 2px solid #C89B3C;
@@ -19,7 +26,7 @@
     border-radius: 2px;
   }
   h1, h2, h3, h4 {
-    @apply font-display text-ivory;
+    @apply font-display text-ink;
   }
 }
 
