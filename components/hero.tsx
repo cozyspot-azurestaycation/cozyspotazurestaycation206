@@ -35,7 +35,7 @@ export function Hero() {
           media="(max-width: 767px)"
           type="video/mp4"
         />
-        <source src="/videos/hero.mp4" type="video/mp4" />
+        <source src="/videos/hero_web.mp4" type="video/mp4" />
       </video>
 
       {/* Fallback background if video is unavailable */}
@@ -75,14 +75,14 @@ export function Hero() {
         {/* Call-to-action buttons — solid fill + a translucent-but-blurred
             outline button so both stay legible over any part of the video. */}
         <div className="mt-9 flex flex-wrap items-center gap-4">
-          <a
+          
             href="#book"
             className="rounded-full bg-brass px-6 py-3 text-sm font-medium text-ink shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-brass-light hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brass focus:ring-offset-2 focus:ring-offset-ink"
           >
             Check Availability
           </a>
 
-          <a
+          
             href="#stay"
             className="rounded-full border border-linen/70 bg-ink/30 px-6 py-3 text-sm font-medium text-linen backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-linen hover:bg-ink/50 focus:outline-none focus:ring-2 focus:ring-linen/40"
           >
