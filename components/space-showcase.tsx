@@ -55,16 +55,15 @@ export function SpaceShowcase() {
 
       {/* Hero photo — the resort's beach lagoon and pool, the single
           strongest selling point of the property, so it leads.
-          This source photo is 4:3 landscape, so the box matches that
-          ratio directly (no letterboxing, no crop). */}
-      <div className="relative mx-auto mt-10 aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-2xl">
+          Full-width landscape banner. */}
+      <div className="relative mt-10 h-[45vw] max-h-[480px] min-h-[260px] w-full overflow-hidden rounded-2xl">
         <Image
           src="/images/space/07-resort-pool-lagoon.jpg"
           alt="Panoramic view of the resort's man-made white sand beach and lagoon pool surrounded by palm trees"
           fill
           priority
-          sizes="(max-width: 768px) 100vw, 672px"
-          className="object-contain"
+          sizes="(max-width: 768px) 100vw, 1152px"
+          className="object-cover"
         />
       </div>
       <p className="mx-auto mt-5 max-w-sm text-center font-display text-xl text-ink/80">
@@ -111,15 +110,15 @@ export function SpaceShowcase() {
 
       {/* Second feature photo — the balcony view of the resort's pool
           and towers, reinforcing the outdoor space guests step into.
-          This source photo is 3:4 portrait, so the box matches that
-          ratio directly (no letterboxing, no crop). */}
-      <div className="relative mx-auto mt-10 aspect-[3/4] w-full max-w-lg overflow-hidden rounded-2xl">
+          Full-width landscape banner (source is portrait, so this
+          crops in on the middle of the shot to fill a wide frame). */}
+      <div className="relative mt-10 h-[45vw] max-h-[480px] min-h-[260px] w-full overflow-hidden rounded-2xl">
         <Image
           src="/images/space/03-bedroom-suite.jpg"
           alt="View from the private balcony over the resort's pool, beach area, and towers"
           fill
-          sizes="(max-width: 768px) 100vw, 512px"
-          className="object-contain"
+          sizes="(max-width: 768px) 100vw, 1152px"
+          className="object-cover"
         />
       </div>
       <div className="mt-6 flex flex-col items-center gap-4 text-center">
