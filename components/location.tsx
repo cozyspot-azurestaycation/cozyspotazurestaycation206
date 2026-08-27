@@ -3,11 +3,14 @@ import { siteConfig } from "@/lib/site-config";
 export function LocationSection() {
   const address = `${siteConfig.address.streetAddress}, ${siteConfig.address.addressLocality}, ${siteConfig.address.postalCode} ${siteConfig.address.addressRegion}`;
 
-  const mapsUrl =
-    "https://www.google.com/maps/search/?api=1&query=Unit+206+Santorini+Tower+Azure+Urban+Resort+Residences+KM+16+W+Service+Rd+Paranaque+1700+Metro+Manila";
+  // Both URLs point at the specific "Cozy Spot Azure Staycation" Google
+  // Maps listing (via its CID), not a generic address search — this is
+  // what keeps the embed to a single pin instead of showing every
+  // nearby tower/unit that matches a text search.
+  const mapsUrl = "https://www.google.com/maps?cid=5497069179321338430";
 
   const mapEmbedUrl =
-    "https://www.google.com/maps?q=Azure+Urban+Resort+Residences,+Paranaque,+Metro+Manila&output=embed";
+    "https://www.google.com/maps?cid=5497069179321338430&output=embed";
 
   return (
     <section id="location" className="bg-ink py-20 text-linen sm:py-28">
@@ -96,3 +99,4 @@ export function LocationSection() {
     </section>
   );
 }
+
