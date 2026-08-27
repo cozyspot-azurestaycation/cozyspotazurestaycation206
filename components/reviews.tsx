@@ -113,11 +113,17 @@ export function Reviews() {
 
               <div className="flex items-center gap-4">
 
-                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border border-ivory/70 bg-ivory/10 sm:h-16 sm:w-16">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-ivory/70 bg-ivory/10 font-display text-lg font-medium text-ivory sm:h-16 sm:w-16">
                   <img
                     src={review.image}
                     alt={`${review.name} guest review`}
                     className="h-full w-full object-cover"
+                    onError={(e) => {
+                      // No real photo on file for this guest — fall back to an initial.
+                      e.currentTarget.style.display = "none";
+                      e.currentTarget.parentElement!.textContent =
+                        review.name.charAt(0);
+                    }}
                   />
                 </div>
 
@@ -231,3 +237,4 @@ export function Reviews() {
     </section>
   );
 }
+
