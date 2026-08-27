@@ -61,7 +61,7 @@ Thank you!`
         {/* Booking form */}
         <form
           onSubmit={handleSubmit}
-          className="mt-6 rounded-2xl border border-ink/10 bg-cloud p-5 shadow-card sm:p-6"
+          className="mt-6 rounded-2xl border border-ink/10 bg-cloud p-5 shadow-card-light sm:p-6"
         >
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 

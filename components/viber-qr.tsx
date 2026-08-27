@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site-config";
  */
 export function ViberQr() {
   return (
-    <div className="flex w-fit flex-col items-center gap-3 rounded-2xl bg-linen p-5 text-center shadow-card">
+    <div className="flex w-fit flex-col items-center gap-3 rounded-2xl bg-linen p-5 text-center shadow-card-light">
       <p className="text-xs font-medium text-ink">
         {siteConfig.shortName} Staycation
         <br />

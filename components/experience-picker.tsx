@@ -55,7 +55,7 @@ export function ExperiencePicker() {
           <a
             key={r.label}
             href="#book"
-            className="group flex min-h-[220px] flex-col justify-between rounded-2xl border border-ink/8 bg-cloud p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brass/40 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brass/40"
+            className="group flex min-h-[220px] flex-col justify-between rounded-2xl border border-ink/8 bg-cloud p-5 shadow-card-light transition-all duration-300 hover:-translate-y-1 hover:border-brass/40 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brass/40"
           >
             <div className="flex items-start justify-between">
               <span
