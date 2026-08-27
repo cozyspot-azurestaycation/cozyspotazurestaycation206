@@ -20,6 +20,18 @@
     min-width: 0;
     max-width: 100%;
   }
+  /* Strip the browser's own chrome around <input type="date">. Without
+     this, mobile Safari/Chrome render their native calendar-icon widget
+     with its own background/shadow that doesn't respect our custom
+     styling — it shows up as a stray shadowed box next to the field. */
+  input[type="date"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    cursor: pointer;
+  }
   :focus-visible {
     outline: 2px solid #C89B3C;
     outline-offset: 3px;
