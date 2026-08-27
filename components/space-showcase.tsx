@@ -8,10 +8,10 @@ const gridShots = [
     height: 1280,
   },
   {
-    src: "/images/space/03-bedroom-suite.jpg",
+    src: "/images/space/08-resort-pool-lagoon-alt.jpg",
     alt: "Queen bedroom suite with plush blue and grey bedding, mirrored headboard wall, and ambient lighting",
-    width: 960,
-    height: 1280,
+    width: 1080,
+    height: 1080,
   },
   {
     src: "/images/space/04-shower-bathroom.jpg",
@@ -32,10 +32,10 @@ const gridShots = [
     height: 1280,
   },
   {
-    src: "/images/space/07-resort-pool-lagoon.jpg",
-    alt: "Panoramic view of the resort's beach lagoon and pool surrounded by palm trees",
-    width: 1280,
-    height: 960,
+    src: "/images/space/01-balcony-beach-view.jpg",
+    alt: "Private balcony seating area with wicker chairs and a bistro table overlooking the resort",
+    width: 1080,
+    height: 1080,
   },
 ];
 
@@ -47,16 +47,14 @@ export function SpaceShowcase() {
         A space that feels like home.
       </h2>
 
-      {/* Hero photo — the balcony view of the resort's man-made beach,
-          the single strongest selling point of this unit, so it leads.
-          The source photo is a perfect square, so the box is sized to
-          match its own aspect ratio (capped so it doesn't get huge on
-          wide screens) instead of a wide banner shape, which is what
-          was forcing a crop before. */}
-      <div className="relative mx-auto mt-10 aspect-square w-full max-w-2xl overflow-hidden rounded-2xl">
+      {/* Hero photo — the resort's beach lagoon and pool, the single
+          strongest selling point of the property, so it leads.
+          This source photo is 4:3 landscape, so the box matches that
+          ratio directly (no letterboxing, no crop). */}
+      <div className="relative mx-auto mt-10 aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-2xl">
         <Image
-          src="/images/space/01-balcony-beach-view.jpg"
-          alt="Private balcony overlooking the resort's man-made white sand beach and lagoon pool at Azure Urban Resort Residences"
+          src="/images/space/07-resort-pool-lagoon.jpg"
+          alt="Panoramic view of the resort's man-made white sand beach and lagoon pool surrounded by palm trees"
           fill
           priority
           sizes="(max-width: 768px) 100vw, 672px"
@@ -90,15 +88,16 @@ export function SpaceShowcase() {
         ))}
       </div>
 
-      {/* Second feature photo — the lagoon/pool experience guests step out
-          into, reinforcing the resort access beyond the unit itself.
-          Also a square source photo, so same fix as the hero above. */}
-      <div className="relative mx-auto mt-10 aspect-square w-full max-w-2xl overflow-hidden rounded-2xl">
+      {/* Second feature photo — the balcony view of the resort's pool
+          and towers, reinforcing the outdoor space guests step into.
+          This source photo is 3:4 portrait, so the box matches that
+          ratio directly (no letterboxing, no crop). */}
+      <div className="relative mx-auto mt-10 aspect-[3/4] w-full max-w-lg overflow-hidden rounded-2xl">
         <Image
-          src="/images/space/08-resort-pool-lagoon-alt.jpg"
-          alt="Guests enjoying the resort's white sand lagoon pool with cabana seating"
+          src="/images/space/03-bedroom-suite.jpg"
+          alt="View from the private balcony over the resort's pool, beach area, and towers"
           fill
-          sizes="(max-width: 768px) 100vw, 672px"
+          sizes="(max-width: 768px) 100vw, 512px"
           className="object-contain"
         />
       </div>
