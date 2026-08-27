@@ -4,44 +4,29 @@ const gridShots = [
   {
     src: "/images/space/02-billiards-lounge.jpg",
     alt: "Billiards table set up for a game in the unit's lounge area, with resort views through the balcony",
-    width: 960,
-    height: 1280,
-    // Portrait 3:4 source, but it sits next to square photos in the
-    // grid and was sticking out taller than the rest. Crop it to a
-    // square from the top so it lines up — the pool table and balls
-    // (the interesting part) are toward the bottom of the shot, so
-    // that's what stays in frame.
-    cropSquare: true,
+    // Portrait source — crop from the top so the pool table and balls
+    // (the interesting part, toward the bottom of the shot) stay in frame.
+    objectPosition: "object-bottom",
   },
   {
     src: "/images/space/08-resort-pool-lagoon-alt.jpg",
     alt: "Queen bedroom suite with plush blue and grey bedding, mirrored headboard wall, and ambient lighting",
-    width: 1080,
-    height: 1080,
   },
   {
     src: "/images/space/04-shower-bathroom.jpg",
     alt: "Modern rain shower with mosaic mirror tile wall and marble-look finishes",
-    width: 1080,
-    height: 1440,
   },
   {
     src: "/images/space/05-dining-setup.jpg",
     alt: "Elegant dining table set for four with fine glassware and fresh orchids",
-    width: 1080,
-    height: 1440,
   },
   {
     src: "/images/space/06-gaming-entertainment.jpg",
     alt: "Smart TV with PS4 gaming console and controller, plus board games available for guests",
-    width: 960,
-    height: 1280,
   },
   {
     src: "/images/space/01-balcony-beach-view.jpg",
     alt: "Private balcony seating area with wicker chairs and a bistro table overlooking the resort",
-    width: 1080,
-    height: 1080,
   },
 ];
 
@@ -70,42 +55,24 @@ export function SpaceShowcase() {
         Wake up somewhere you actually want to stay.
       </p>
 
-      {/* Masonry-style columns instead of a fixed-height grid: these
-          photos are a mix of portrait and landscape shots, so each one
-          is shown at its own natural aspect ratio (no object-cover
-          crop) and the columns just pack around whatever height that
-          gives it. */}
-      <div className="mt-10 columns-1 gap-3 sm:columns-2 lg:columns-3">
-        {gridShots.map((shot) =>
-          shot.cropSquare ? (
-            <div
-              key={shot.src}
-              className="relative mb-3 aspect-square overflow-hidden rounded-2xl break-inside-avoid"
-            >
-              <Image
-                src={shot.src}
-                alt={shot.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover object-bottom"
-              />
-            </div>
-          ) : (
-            <div
-              key={shot.src}
-              className="mb-3 overflow-hidden rounded-2xl break-inside-avoid"
-            >
-              <Image
-                src={shot.src}
-                alt={shot.alt}
-                width={shot.width}
-                height={shot.height}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="h-auto w-full"
-              />
-            </div>
-          )
-        )}
+      {/* Uniform grid — every tile is the same square size so the
+          section reads as balanced, regardless of each source photo's
+          own aspect ratio. */}
+      <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {gridShots.map((shot) => (
+          <div
+            key={shot.src}
+            className="relative aspect-square overflow-hidden rounded-2xl"
+          >
+            <Image
+              src={shot.src}
+              alt={shot.alt}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className={`object-cover ${shot.objectPosition ?? ""}`}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Second feature photo — the balcony view of the resort's pool
