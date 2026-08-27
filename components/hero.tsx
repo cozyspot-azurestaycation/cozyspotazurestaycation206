@@ -35,7 +35,7 @@ export function Hero() {
           media="(max-width: 767px)"
           type="video/mp4"
         />
-          <source src="/videos/hero_web.mp4" type="video/mp4" />
+        <source src="/videos/hero_web.mp4" type="video/mp4" />
       </video>
 
       {/* Fallback background if video is unavailable */}
