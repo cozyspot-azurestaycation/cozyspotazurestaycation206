@@ -79,7 +79,13 @@ const config: Config = {
       },
       boxShadow: {
         // Dark-UI elevation: a faint top highlight + a deep, soft drop shadow.
+        // Intended for cards sitting on the dark navy sections — the heavy
+        // dark shadow reads as a duplicate/ghost box on light backgrounds.
         card: "0 1px 0 rgba(245,241,232,0.05), 0 20px 40px -20px rgba(0,0,0,0.55)",
+        // Light-UI elevation: for cards sitting on the light linen/cloud
+        // sections (booking form, experience picker, etc). Much lower
+        // opacity so it reads as a soft lift, not a second box.
+        "card-light": "0 16px 32px -20px rgba(15,37,56,0.18)",
         stamp: "0 2px 0 rgba(200,155,60,0.35)",
       },
     },
