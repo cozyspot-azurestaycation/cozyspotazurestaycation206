@@ -9,6 +9,9 @@ const reviews = [
     years: "2 years on Airbnb",
     date: "June 2024",
     image: "/images/reviews/trixia.jpg",
+    // Bump this up/down (1 = no zoom) until the face fills the circle
+    // with no white/blank space around it. Try 1.3–1.8.
+    zoom: 1.5,
     review:
       "We had a fantastic stay. The location was perfect, the space was clean and well-maintained, and the host was incredibly accommodating and responsive. Highly recommend!",
   },
@@ -17,6 +20,7 @@ const reviews = [
     years: "5 years on Airbnb",
     date: "May 2024",
     image: "/images/reviews/chezka-mari.jpg",
+    zoom: 1.5,
     review:
       "The host is very nice and responsive. The room is very clean and elegant. There are lots of games and entertainment to do. Overall, I will recommend this staycation. It was a nice vacation!",
   },
@@ -25,6 +29,7 @@ const reviews = [
     years: "9 years on Airbnb",
     date: "February 2025",
     image: "/images/reviews/richelle.jpg",
+    zoom: 1.5,
     review:
       "Very accommodating and friendly host. Clean and relaxing place. Worth the price.",
   },
@@ -33,6 +38,7 @@ const reviews = [
     years: "1 year on Airbnb",
     date: "May 2025",
     image: "/images/reviews/maricon.jpg",
+    zoom: 1.5,
     review:
       "Thank you for accommodating us! We're able to celebrate our son's 2nd birthday in your cozy home. It is highly recommended for everyone who are looking for a place to have fun and relaxation. We would surely book again.",
   },
@@ -41,6 +47,7 @@ const reviews = [
     years: "8 years on Airbnb",
     date: "November 2025",
     image: "/images/reviews/maica.jpg",
+    zoom: 1.5,
     review:
       "Great place to stay! Sir Pj was very easy to talk to, especially when we rescheduled because of the typhoon, he was very accommodating. The place was also nice, it was very worth it from check-in to check-out!",
   },
@@ -49,6 +56,7 @@ const reviews = [
     years: "1 year on Airbnb",
     date: "December 2025",
     image: "/images/reviews/charles-albert.jpg",
+    zoom: 1.5,
     review:
       "What you see in the picture is exactly what you'll see in person. The room is nice and clean. The owner also answers all of my questions.",
   },
@@ -113,16 +121,21 @@ export function Reviews() {
 
               <div className="flex items-center gap-4">
 
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-ivory/70 bg-ivory/10 font-display text-lg font-medium text-ivory sm:h-16 sm:w-16">
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-ivory/70 bg-ivory/10 font-display text-lg font-medium text-ivory sm:h-16 sm:w-16">
+                  {/* Fallback initial, shown underneath — only visible if the img fails to load */}
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    {review.name.charAt(0)}
+                  </span>
+
                   <img
                     src={review.image}
                     alt={`${review.name} guest review`}
-                    className="h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                    style={{ transform: `scale(${review.zoom ?? 1})` }}
                     onError={(e) => {
-                      // No real photo on file for this guest — fall back to an initial.
+                      // No real photo on file for this guest — hide the img,
+                      // the initial underneath will show through instead.
                       e.currentTarget.style.display = "none";
-                      e.currentTarget.parentElement!.textContent =
-                        review.name.charAt(0);
                     }}
                   />
                 </div>
@@ -160,7 +173,7 @@ export function Reviews() {
                 className="font-display text-5xl leading-none text-gold"
                 aria-hidden="true"
               >
-                “
+                "
               </span>
 
               <p className="mt-1 max-w-2xl font-display text-lg leading-relaxed text-ivory/90 sm:text-2xl">
@@ -237,4 +250,3 @@ export function Reviews() {
     </section>
   );
 }
-
