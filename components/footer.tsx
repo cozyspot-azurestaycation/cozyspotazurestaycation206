@@ -5,8 +5,8 @@ import { ViberQr } from "@/components/viber-qr";
 export function Footer() {
   return (
     <footer className="border-t border-ink/10 bg-linen px-5 py-14 pb-28 text-ink sm:pb-14">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 sm:grid-cols-4">
-        <div className="col-span-2 min-w-0 sm:col-span-1">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 sm:grid-cols-4">
+        <div className="min-w-0">
           <p className="font-display text-lg">{siteConfig.shortName}</p>
           <p className="mt-2 text-xs leading-relaxed text-ink/55">
             {siteConfig.address.streetAddress}
@@ -30,10 +30,15 @@ export function Footer() {
           </ul>
         </div>
 
+        {/* Contact — email, phone, and the Viber business QR grouped
+            together in one column instead of the QR floating separately
+            further down the page. Full width on mobile (no more squeezed
+            half-column) so the email wraps at natural points instead of
+            splitting mid-word. */}
         <div className="min-w-0">
           <p className="eyebrow">Contact</p>
           <ul className="mt-3 space-y-2 text-sm text-ink/70">
-            <li className="break-all">
+            <li className="break-words">
               <a href={`mailto:${siteConfig.email}`} className="hover:text-ink">
                 {siteConfig.email}
               </a>
@@ -44,6 +49,10 @@ export function Footer() {
               </a>
             </li>
           </ul>
+
+          <div className="mt-5">
+            <ViberQr />
+          </div>
         </div>
 
         <div className="min-w-0">
@@ -68,15 +77,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-6xl flex-col-reverse items-start justify-between gap-8 sm:flex-row sm:items-end">
+      <div className="mx-auto mt-12 max-w-6xl border-t border-ink/10 pt-6">
         <p className="font-mono text-[11px] text-ink/40">
           © {new Date().getFullYear()} {siteConfig.name}. Operating since{" "}
           {siteConfig.foundingYear}. All rights reserved.
         </p>
-
-        <ViberQr />
       </div>
     </footer>
   );
 }
+
 
