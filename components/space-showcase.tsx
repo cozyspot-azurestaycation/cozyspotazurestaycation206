@@ -6,6 +6,12 @@ const gridShots = [
     alt: "Billiards table set up for a game in the unit's lounge area, with resort views through the balcony",
     width: 960,
     height: 1280,
+    // Portrait 3:4 source, but it sits next to square photos in the
+    // grid and was sticking out taller than the rest. Crop it to a
+    // square from the top so it lines up — the pool table and balls
+    // (the interesting part) are toward the bottom of the shot, so
+    // that's what stays in frame.
+    cropSquare: true,
   },
   {
     src: "/images/space/08-resort-pool-lagoon-alt.jpg",
@@ -71,21 +77,36 @@ export function SpaceShowcase() {
           crop) and the columns just pack around whatever height that
           gives it. */}
       <div className="mt-10 columns-1 gap-3 sm:columns-2 lg:columns-3">
-        {gridShots.map((shot) => (
-          <div
-            key={shot.src}
-            className="mb-3 overflow-hidden rounded-2xl break-inside-avoid"
-          >
-            <Image
-              src={shot.src}
-              alt={shot.alt}
-              width={shot.width}
-              height={shot.height}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="h-auto w-full"
-            />
-          </div>
-        ))}
+        {gridShots.map((shot) =>
+          shot.cropSquare ? (
+            <div
+              key={shot.src}
+              className="relative mb-3 aspect-square overflow-hidden rounded-2xl break-inside-avoid"
+            >
+              <Image
+                src={shot.src}
+                alt={shot.alt}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover object-bottom"
+              />
+            </div>
+          ) : (
+            <div
+              key={shot.src}
+              className="mb-3 overflow-hidden rounded-2xl break-inside-avoid"
+            >
+              <Image
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.width}
+                height={shot.height}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="h-auto w-full"
+              />
+            </div>
+          )
+        )}
       </div>
 
       {/* Second feature photo — the balcony view of the resort's pool
