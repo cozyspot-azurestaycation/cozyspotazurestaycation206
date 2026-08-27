@@ -76,7 +76,7 @@ Thank you!`
                 type="date"
                 value={checkIn}
                 onChange={(e) => setCheckIn(e.target.value)}
-                className="mt-2 block w-full min-w-0 rounded-xl border border-ink/15 bg-linen px-3 py-2.5 text-sm text-ink outline-none transition-colors focus:border-brass"
+                className="mt-2 block w-full min-w-0 appearance-none rounded-xl border border-ink/15 bg-linen px-3 py-2.5 text-sm text-ink outline-none transition-colors focus:border-brass"
               />
             </label>
 
@@ -91,7 +91,7 @@ Thank you!`
                 type="date"
                 value={checkOut}
                 onChange={(e) => setCheckOut(e.target.value)}
-                className="mt-2 block w-full min-w-0 rounded-xl border border-ink/15 bg-linen px-3 py-2.5 text-sm text-ink outline-none transition-colors focus:border-brass"
+                className="mt-2 block w-full min-w-0 appearance-none rounded-xl border border-ink/15 bg-linen px-3 py-2.5 text-sm text-ink outline-none transition-colors focus:border-brass"
               />
             </label>
 
@@ -205,3 +205,4 @@ Thank you!`
     </section>
   );
 }
+
