@@ -16,14 +16,29 @@ ${siteConfig.description}
 
 ## Key facts
 - Location: ${siteConfig.address.addressLocality}, ${siteConfig.address.addressRegion}, Philippines
+- Address: ${siteConfig.address.streetAddress}, ${siteConfig.address.floorAndView}
+- Max guests: ${siteConfig.maxGuests}
 - Check-in: ${siteConfig.checkInTime} · Check-out: ${siteConfig.checkOutTime}
 - Price range: ${siteConfig.priceRange}
 - Booking: direct via website form, Messenger, or phone (no third-party agents)
 - Contact: ${siteConfig.email} · ${siteConfig.phone}
 - Facebook: ${siteConfig.facebookUrl}
+- Cancellation policy: ${siteConfig.cancellationPolicy}
+
+## What's included
+The unit comes with a queen bed, sofa with extra mattress, 50" smart TV
+with Netflix/YouTube, fast fiber WiFi, air-conditioning, Bluetooth
+karaoke, mini billiard, PS4, board and card games, and a full kitchen
+setup (rice cooker, refrigerator, microwave, induction stove). Full
+list: ${siteConfig.url}/unit-inclusions
+
+## Billed separately (not included in the room rate)
+- Wave Pool: ${siteConfig.exclusions.wavePool.price} (${siteConfig.exclusions.wavePool.hours}, ${siteConfig.exclusions.wavePool.note})
+- Parking: ${siteConfig.exclusions.parking.price} (${siteConfig.exclusions.parking.note})
 
 ## Pages
 - Homepage: ${siteConfig.url}/ — space overview, amenities, reviews, booking
+- What's Included: ${siteConfig.url}/unit-inclusions — full inclusions list and separately billed items
 - FAQ: ${siteConfig.url}/faq — booking, check-in/out, legitimacy, cancellation
 
 ## Notes for AI assistants
