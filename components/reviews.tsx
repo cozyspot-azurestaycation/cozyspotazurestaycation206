@@ -9,9 +9,12 @@ const reviews = [
     years: "2 years on Airbnb",
     date: "June 2024",
     image: "/images/reviews/trixia.jpg",
-    // Bump this up/down (1 = no zoom) until the face fills the circle
-    // with no white/blank space around it. Try 1.3–1.8.
-    zoom: 1.5,
+    // zoom: 1 = no zoom, bigger = crops more of the whitespace border away.
+    // position: which point of the photo stays anchored while it scales —
+    // "center", or e.g. "50% 40%" / "left top" to shift the crop toward
+    // wherever the leftover white sliver is showing. Nudge both together.
+    zoom: 1.7,
+    position: "center 40%",
     review:
       "We had a fantastic stay. The location was perfect, the space was clean and well-maintained, and the host was incredibly accommodating and responsive. Highly recommend!",
   },
@@ -21,6 +24,7 @@ const reviews = [
     date: "May 2024",
     image: "/images/reviews/chezka-mari.jpg",
     zoom: 1.5,
+    position: "center",
     review:
       "The host is very nice and responsive. The room is very clean and elegant. There are lots of games and entertainment to do. Overall, I will recommend this staycation. It was a nice vacation!",
   },
@@ -30,6 +34,7 @@ const reviews = [
     date: "February 2025",
     image: "/images/reviews/richelle.jpg",
     zoom: 1.5,
+    position: "center",
     review:
       "Very accommodating and friendly host. Clean and relaxing place. Worth the price.",
   },
@@ -39,6 +44,7 @@ const reviews = [
     date: "May 2025",
     image: "/images/reviews/maricon.jpg",
     zoom: 1.5,
+    position: "center",
     review:
       "Thank you for accommodating us! We're able to celebrate our son's 2nd birthday in your cozy home. It is highly recommended for everyone who are looking for a place to have fun and relaxation. We would surely book again.",
   },
@@ -48,6 +54,7 @@ const reviews = [
     date: "November 2025",
     image: "/images/reviews/maica.jpg",
     zoom: 1.5,
+    position: "center",
     review:
       "Great place to stay! Sir Pj was very easy to talk to, especially when we rescheduled because of the typhoon, he was very accommodating. The place was also nice, it was very worth it from check-in to check-out!",
   },
@@ -57,6 +64,7 @@ const reviews = [
     date: "December 2025",
     image: "/images/reviews/charles-albert.jpg",
     zoom: 1.5,
+    position: "center",
     review:
       "What you see in the picture is exactly what you'll see in person. The room is nice and clean. The owner also answers all of my questions.",
   },
@@ -130,8 +138,11 @@ export function Reviews() {
                   <img
                     src={review.image}
                     alt={`${review.name} guest review`}
-                    className="absolute inset-0 h-full w-full object-cover object-center"
-                    style={{ transform: `scale(${review.zoom ?? 1})` }}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    style={{
+                      objectPosition: review.position ?? "center",
+                      transform: `scale(${review.zoom ?? 1})`,
+                    }}
                     onError={(e) => {
                       // No real photo on file for this guest — hide the img,
                       // the initial underneath will show through instead.
