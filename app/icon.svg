@@ -1,0 +1,36 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pin shape -->
+  <path
+    d="M32 3
+       C18.75 3 8 13.64 8 26.75
+       C8 41.5 26.6 58.7 30.35 61.98
+       C31.3 62.82 32.7 62.82 33.65 61.98
+       C37.4 58.7 56 41.5 56 26.75
+       C56 13.64 45.25 3 32 3 Z"
+    fill="#0F2538"
+    stroke="#C9A24B"
+    stroke-width="1.4"
+  />
+
+  <!-- House glyph -->
+  <g transform="translate(32 27)">
+    <!-- roof -->
+    <path
+      d="M-14 -2 L0 -14 L14 -2 L11 -2 L11 12 L-11 12 L-11 -2 Z"
+      fill="#F4EFE6"
+    />
+    <!-- roof ridge accent -->
+    <path
+      d="M-14 -2 L0 -14 L14 -2"
+      fill="none"
+      stroke="#C9A24B"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <!-- door -->
+    <rect x="-3.4" y="1" width="6.8" height="11" rx="1" fill="#0F2538" />
+    <!-- door knob -->
+    <circle cx="1.7" cy="7" r="0.7" fill="#C9A24B" />
+  </g>
+</svg>
