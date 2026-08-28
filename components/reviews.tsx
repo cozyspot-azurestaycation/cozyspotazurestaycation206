@@ -10,11 +10,12 @@ const reviews = [
     date: "June 2024",
     image: "/images/reviews/trixia.jpg",
     // zoom: 1 = no zoom, bigger = crops more of the whitespace border away.
-    // position: which point of the photo stays anchored while it scales —
-    // "center", or e.g. "50% 40%" / "left top" to shift the crop toward
-    // wherever the leftover white sliver is showing. Nudge both together.
-    zoom: 1.7,
-    position: "center 40%",
+    // position: "X% Y%" — the source-photo point that stays anchored.
+    // Raising X (toward 100%) shows more of the image's RIGHT side,
+    // cropping LEFT-side padding out of frame. Raising Y shifts the
+    // crop down; lowering it shifts up. Nudge in small steps.
+    zoom: 1.9,
+    position: "65% 40%",
     review:
       "We had a fantastic stay. The location was perfect, the space was clean and well-maintained, and the host was incredibly accommodating and responsive. Highly recommend!",
   },
@@ -33,8 +34,8 @@ const reviews = [
     years: "9 years on Airbnb",
     date: "February 2025",
     image: "/images/reviews/richelle.jpg",
-    zoom: 1.5,
-    position: "center",
+    zoom: 1.8,
+    position: "65% 45%",
     review:
       "Very accommodating and friendly host. Clean and relaxing place. Worth the price.",
   },
@@ -53,8 +54,8 @@ const reviews = [
     years: "8 years on Airbnb",
     date: "November 2025",
     image: "/images/reviews/maica.jpg",
-    zoom: 1.7,
-    position: "center 40%",
+    zoom: 1.9,
+    position: "65% 40%",
     review:
       "Great place to stay! Sir Pj was very easy to talk to, especially when we rescheduled because of the typhoon, he was very accommodating. The place was also nice, it was very worth it from check-in to check-out!",
   },
