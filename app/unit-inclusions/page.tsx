@@ -40,7 +40,6 @@ type GalleryImage = {
 };
 
 const galleryImages: GalleryImage[] = [
-  { src: "/images/inclusions/celebration-floral-arch-bed-setup.jpg", alt: "Bed setup with floral arch styling" },
   { src: "/images/inclusions/mini-billiard-table-lounge.jpg", alt: "Mini billiard table lounge" },
   { src: "/images/inclusions/ps4-console-controllers-games.jpg", alt: "PS4 with controllers set up for game night" },
   { src: "/images/inclusions/modern-bathroom-rain-shower.jpg", alt: "Modern bathroom with rain shower" },
@@ -125,52 +124,40 @@ export default function InclusionsPage() {
           </div>
 
           {/* Photo gallery */}
-          <div className="mt-14">
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-6 sm:gap-4">
-              {/* Large left tile */}
-              <div className="relative col-span-2 row-span-2 aspect-square overflow-hidden rounded-2xl sm:col-span-3 sm:row-span-2 sm:aspect-auto">
-                <Image
-                  src={galleryImages[0].src}
-                  alt={galleryImages[0].alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Four smaller tiles */}
-              {galleryImages.slice(1, 5).map((img) => (
+          <div className="mt-16 sm:mt-20">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
+              {galleryImages.slice(0, 4).map((img) => (
                 <div
                   key={img.src}
-                  className="relative aspect-square overflow-hidden rounded-2xl sm:col-span-3 sm:aspect-[4/3]"
+                  className="relative aspect-[4/3] overflow-hidden rounded-3xl"
                 >
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    sizes="(max-width: 640px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </div>
               ))}
-
-              {/* Optional 6th tile, wide */}
-              {galleryImages[5] ? (
-                <div className="relative col-span-2 aspect-[16/9] overflow-hidden rounded-2xl sm:col-span-6">
-                  <Image
-                    src={galleryImages[5].src}
-                    alt={galleryImages[5].alt}
-                    fill
-                    sizes="100vw"
-                    className="object-cover"
-                  />
-                </div>
-              ) : null}
             </div>
+
+            {/* Wide closing tile */}
+            {galleryImages[4] ? (
+              <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-3xl sm:mt-8">
+                <Image
+                  src={galleryImages[4].src}
+                  alt={galleryImages[4].alt}
+                  fill
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              </div>
+            ) : null}
           </div>
 
           {/* Exclusions */}
-          <div className="mt-14">
+          <div className="mt-16 sm:mt-20">
             <h2 className="font-display text-xl font-medium text-ivory sm:text-2xl">
               Not included
             </h2>
@@ -225,4 +212,3 @@ export default function InclusionsPage() {
     </section>
   );
 }
-
