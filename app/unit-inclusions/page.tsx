@@ -81,12 +81,15 @@ export default function InclusionsPage() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-navy/10" />
+        {/* Darken the whole photo so any text reads clearly */}
+        <div className="absolute inset-0 bg-navy/55" />
+        {/* Extra scrim behind the text specifically, for guaranteed contrast */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-navy via-navy/80 to-transparent" />
 
         <div className="absolute inset-x-0 bottom-0 px-5 pb-10 sm:pb-14">
           <div className="mx-auto max-w-5xl">
-            <p className="eyebrow text-azure-soft">What's Included</p>
-            <h1 className="mt-3 font-display text-3xl font-medium leading-tight sm:text-5xl">
+            <p className="eyebrow text-azure-soft drop-shadow-sm">What's Included</p>
+            <h1 className="mt-3 font-display text-3xl font-medium leading-tight text-ivory drop-shadow-md sm:text-5xl">
               Everything in your stay.
             </h1>
           </div>
@@ -222,3 +225,4 @@ export default function InclusionsPage() {
     </section>
   );
 }
+
