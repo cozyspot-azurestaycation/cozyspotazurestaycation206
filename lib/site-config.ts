@@ -1,6 +1,6 @@
 /**
  * Single source of truth for business details, used across metadata,
- * structured data (JSON-LD), the footer, and the sitemap.
+ * structured data (JSON-LD), the footer, the sitemap, and llms.txt.
  *
  * EDIT THIS FILE FIRST. Everything else reads from here.
  */
@@ -50,6 +50,26 @@ export const siteConfig = {
   priceRange: "₱₱", // shows in search results / schema
   checkInTime: "14:00",
   checkOutTime: "12:00",
+
+  maxGuests: "4 pax + 1 baby or toddler (strictly below 3 feet)",
+
+  cancellationPolicy:
+    "Free rescheduling up to 3 days before check-in; contact us directly for cancellations.",
+
+  // Amenities billed separately, not part of the base room rate —
+  // shared by the /unit-inclusions page and llms.txt so the numbers
+  // never drift out of sync between the two.
+  exclusions: {
+    wavePool: {
+      price: "₱250 per head, per shift",
+      hours: "7AM–12NN · 2PM–7PM",
+      note: "Closed every Tuesday",
+    },
+    parking: {
+      price: "₱250–₱380",
+      note: "Depending on vehicle and parking option",
+    },
+  },
 
   nav: [
     { label: "Stay", href: "#stay" },
