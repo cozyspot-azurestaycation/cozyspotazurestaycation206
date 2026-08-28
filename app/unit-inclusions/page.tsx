@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "What's Included — Cozy Spot Azure Staycation",
@@ -7,30 +8,38 @@ export const metadata: Metadata = {
     "Everything included in your stay at Cozy Spot Azure — room amenities, entertainment, kitchenware — plus wave pool and parking fees to plan around.",
 };
 
-const roomInclusions: string[] = [
-  "Queen sized bed",
-  "2 queen sized pillows",
-  "4pcs standard pillows with cushion",
-  "2 seater sofa and extra mattress",
-  "50\" smart TV",
-  "Netflix and YouTube access",
-  "Fast WiFi connection (fibr connection)",
-  "Air-conditioning unit",
-  "Electric fan",
-  "Bluetooth karaoke with 2 mics",
-  "Mini billiard",
-  "PS4",
-  "Board games",
-  "Card games",
-  "Dining and kitchenware",
-  "Rice cooker",
-  "Refrigerator",
-  "Microwave oven",
-  "Induction stove",
-  "Full body mirror",
-  "Bath towels",
-  "Hot and cold shower",
-  "Hair blower",
+const roomInclusions: { label: string; image?: string }[] = [
+  { label: "Queen sized bed", image: "/images/inclusions/celebration-floral-arch-bed-setup.jpg" },
+  { label: "2 queen sized pillows" },
+  { label: "4pcs standard pillows with cushion" },
+  { label: "2 seater sofa and extra mattress" },
+  { label: "50\" smart TV" },
+  { label: "Netflix and YouTube access" },
+  { label: "Fast WiFi connection (fibr connection)" },
+  { label: "Air-conditioning unit" },
+  { label: "Electric fan" },
+  { label: "Bluetooth karaoke with 2 mics" },
+  { label: "Mini billiard", image: "/images/inclusions/mini-billiard-table-lounge.jpg" },
+  { label: "PS4", image: "/images/inclusions/ps4-console-controllers-games.jpg" },
+  { label: "Board games" },
+  { label: "Card games" },
+  { label: "Dining and kitchenware" },
+  { label: "Rice cooker" },
+  { label: "Refrigerator" },
+  { label: "Microwave oven" },
+  { label: "Induction stove" },
+  { label: "Full body mirror" },
+  { label: "Bath towels" },
+  { label: "Hot and cold shower", image: "/images/inclusions/modern-bathroom-rain-shower.jpg" },
+  { label: "Hair blower" },
+];
+
+// A handful of hero shots for the top gallery strip
+const galleryImages: { src: string; alt: string }[] = [
+  { src: "/images/inclusions/celebration-floral-arch-bed-setup.jpg", alt: "Bed setup with floral arch styling" },
+  { src: "/images/inclusions/cozy-corner-plant-reading-lamp.jpg", alt: "Cozy reading corner" },
+  { src: "/images/inclusions/mini-billiard-table-lounge.jpg", alt: "Mini billiard table lounge" },
+  { src: "/images/inclusions/modern-bathroom-rain-shower.jpg", alt: "Modern bathroom with rain shower" },
 ];
 
 const exclusions = [
@@ -38,6 +47,7 @@ const exclusions = [
     label: "Wave Pool",
     detail: "₱250 per head, per shift",
     note: "7AM–12NN · 2PM–7PM · Closed every Tuesday",
+    image: "/images/inclusions/azure-resort-pool-daytime-view.jpg",
   },
   {
     label: "Parking",
@@ -65,6 +75,24 @@ export default function InclusionsPage() {
           </p>
         </div>
 
+        {/* Photo gallery strip */}
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {galleryImages.map((img) => (
+            <div
+              key={img.src}
+              className="relative aspect-square overflow-hidden rounded-xl"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 640px) 50vw, 25vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
         {/* Room inclusions */}
         <div className="mt-14">
           <h2 className="font-display text-xl font-medium text-ivory sm:text-2xl">
@@ -73,15 +101,12 @@ export default function InclusionsPage() {
 
           <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 rounded-2xl border border-ivory/70 px-6 py-7 sm:grid-cols-2 sm:px-9 sm:py-8 lg:grid-cols-3">
             {roomInclusions.map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <span
-                  className="mt-1 text-gold"
-                  aria-hidden="true"
-                >
+              <div key={item.label} className="flex items-start gap-3">
+                <span className="mt-1 text-gold" aria-hidden="true">
                   ✓
                 </span>
                 <span className="text-sm leading-relaxed text-ivory/85 sm:text-[15px]">
-                  {item}
+                  {item.label}
                 </span>
               </div>
             ))}
@@ -98,19 +123,32 @@ export default function InclusionsPage() {
             {exclusions.map((item) => (
               <div
                 key={item.label}
-                className="rounded-2xl border border-ivory/70 px-6 py-6 sm:px-7 sm:py-7"
+                className="overflow-hidden rounded-2xl border border-ivory/70"
               >
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ivory/40">
-                  {item.label}
-                </p>
+                {item.image && (
+                  <div className="relative h-40 w-full">
+                    <Image
+                      src={item.image}
+                      alt={item.label}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+                <div className="px-6 py-6 sm:px-7 sm:py-7">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ivory/40">
+                    {item.label}
+                  </p>
 
-                <p className="mt-3 font-display text-2xl font-medium text-gold sm:text-3xl">
-                  {item.detail}
-                </p>
+                  <p className="mt-3 font-display text-2xl font-medium text-gold sm:text-3xl">
+                    {item.detail}
+                  </p>
 
-                <p className="mt-2 text-sm leading-relaxed text-ivory/60">
-                  {item.note}
-                </p>
+                  <p className="mt-2 text-sm leading-relaxed text-ivory/60">
+                    {item.note}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -133,13 +171,3 @@ export default function InclusionsPage() {
             <Link
               href="/#booking"
               className="inline-flex rounded-full bg-gold px-7 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-lg"
-            >
-              Book Now
-            </Link>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  );
-}
