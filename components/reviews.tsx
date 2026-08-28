@@ -53,8 +53,8 @@ const reviews = [
     years: "8 years on Airbnb",
     date: "November 2025",
     image: "/images/reviews/maica.jpg",
-    zoom: 1.5,
-    position: "center",
+    zoom: 1.7,
+    position: "center 40%",
     review:
       "Great place to stay! Sir Pj was very easy to talk to, especially when we rescheduled because of the typhoon, he was very accommodating. The place was also nice, it was very worth it from check-in to check-out!",
   },
