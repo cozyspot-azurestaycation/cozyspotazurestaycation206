@@ -91,13 +91,14 @@ export function SpaceShowcase() {
         />
       </div>
 
-      <div className="mt-6 flex flex-col items-center gap-4 text-center">
+      <div className="mt-6 flex flex-col items-center gap-5 text-center">
         <p className="font-display text-xl text-ink/80">Stay in. Relax. Enjoy.</p>
         <Link
           href="/unit-inclusions"
-          className="text-sm font-medium text-azure underline underline-offset-4"
+          className="inline-flex items-center gap-2 rounded-full border-2 border-gold px-7 py-3 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold hover:text-navy hover:shadow-lg"
         >
-          See everything included →
+          See everything included
+          <span aria-hidden="true">→</span>
         </Link>
       </div>
     </section>
