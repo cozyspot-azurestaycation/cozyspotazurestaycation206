@@ -8,7 +8,12 @@ export const metadata: Metadata = {
     "Everything included in your stay at Cozy Spot Azure — room amenities, entertainment, kitchenware — plus wave pool and parking fees to plan around.",
 };
 
-const roomInclusions: { label: string; image?: string }[] = [
+type RoomInclusion = {
+  label: string;
+  image?: string;
+};
+
+const roomInclusions: RoomInclusion[] = [
   { label: "Queen sized bed", image: "/images/inclusions/celebration-floral-arch-bed-setup.jpg" },
   { label: "2 queen sized pillows" },
   { label: "4pcs standard pillows with cushion" },
@@ -34,24 +39,35 @@ const roomInclusions: { label: string; image?: string }[] = [
   { label: "Hair blower" },
 ];
 
-// A handful of hero shots for the top gallery strip
-const galleryImages: { src: string; alt: string }[] = [
+type GalleryImage = {
+  src: string;
+  alt: string;
+};
+
+const galleryImages: GalleryImage[] = [
   { src: "/images/inclusions/celebration-floral-arch-bed-setup.jpg", alt: "Bed setup with floral arch styling" },
   { src: "/images/inclusions/cozy-corner-plant-reading-lamp.jpg", alt: "Cozy reading corner" },
   { src: "/images/inclusions/mini-billiard-table-lounge.jpg", alt: "Mini billiard table lounge" },
   { src: "/images/inclusions/modern-bathroom-rain-shower.jpg", alt: "Modern bathroom with rain shower" },
 ];
 
-const exclusions = [
+type Exclusion = {
+  label: string;
+  detail: string;
+  note: string;
+  image?: string;
+};
+
+const exclusions: Exclusion[] = [
   {
     label: "Wave Pool",
-    detail: "₱250 per head, per shift",
-    note: "7AM–12NN · 2PM–7PM · Closed every Tuesday",
+    detail: "\u20B1250 per head, per shift",
+    note: "7AM\u201312NN \u00B7 2PM\u20137PM \u00B7 Closed every Tuesday",
     image: "/images/inclusions/azure-resort-pool-daytime-view.jpg",
   },
   {
     label: "Parking",
-    detail: "₱250–₱380",
+    detail: "\u20B1250\u2013\u20B1380",
     note: "Depending on vehicle and parking option",
   },
 ];
@@ -103,7 +119,7 @@ export default function InclusionsPage() {
             {roomInclusions.map((item) => (
               <div key={item.label} className="flex items-start gap-3">
                 <span className="mt-1 text-gold" aria-hidden="true">
-                  ✓
+                  &#10003;
                 </span>
                 <span className="text-sm leading-relaxed text-ivory/85 sm:text-[15px]">
                   {item.label}
@@ -125,7 +141,7 @@ export default function InclusionsPage() {
                 key={item.label}
                 className="overflow-hidden rounded-2xl border border-ivory/70"
               >
-                {item.image && (
+                {item.image ? (
                   <div className="relative h-40 w-full">
                     <Image
                       src={item.image}
@@ -135,7 +151,7 @@ export default function InclusionsPage() {
                       className="object-cover"
                     />
                   </div>
-                )}
+                ) : null}
                 <div className="px-6 py-6 sm:px-7 sm:py-7">
                   <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ivory/40">
                     {item.label}
@@ -171,3 +187,13 @@ export default function InclusionsPage() {
             <Link
               href="/#booking"
               className="inline-flex rounded-full bg-gold px-7 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-lg"
+            >
+              Book Now
+            </Link>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
