@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const gridShots = [
   {
@@ -51,6 +52,7 @@ export function SpaceShowcase() {
           className="object-cover"
         />
       </div>
+
       <p className="mx-auto mt-5 max-w-sm text-center font-display text-xl text-ink/80">
         Wake up somewhere you actually want to stay.
       </p>
@@ -88,13 +90,16 @@ export function SpaceShowcase() {
           className="object-cover"
         />
       </div>
+
       <div className="mt-6 flex flex-col items-center gap-4 text-center">
         <p className="font-display text-xl text-ink/80">Stay in. Relax. Enjoy.</p>
-        <a href="#amenities" className="text-sm font-medium text-azure underline underline-offset-4">
+        <Link
+          href="/unit-inclusions"
+          className="text-sm font-medium text-azure underline underline-offset-4"
+        >
           See everything included →
-        </a>
+        </Link>
       </div>
     </section>
   );
 }
-
