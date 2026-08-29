@@ -4,13 +4,16 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { galleryItems, filterCategories, type GalleryItem } from "@/lib/gallery-data";
+import {
+  galleryItems,
+  filterCategories,
+  type FilterValue,
+  type GalleryItem,
+} from "@/lib/gallery-data";
 import { Lightbox } from "./lightbox";
 
 const PAGE_SIZE = 8;
 
-// Maps each declared "size" to a mosaic grid span. Small screens
-// collapse everything to a single span so the grid stays legible.
 const sizeClasses: Record<GalleryItem["size"], string> = {
   large: "sm:col-span-2 sm:row-span-2",
   medium: "sm:col-span-2 sm:row-span-1",
@@ -18,9 +21,7 @@ const sizeClasses: Record<GalleryItem["size"], string> = {
 };
 
 export function PhotoGallery() {
-  const [activeFilter, setActiveFilter] = useState
-    (typeof filterCategories)[number]["value"]
-  >("all");
+  const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -32,7 +33,7 @@ export function PhotoGallery() {
   const visibleItems = filteredItems.slice(0, visibleCount);
   const hasMore = visibleCount < filteredItems.length;
 
-  const handleFilterChange = (value: typeof activeFilter) => {
+  const handleFilterChange = (value: FilterValue) => {
     setActiveFilter(value);
     setVisibleCount(PAGE_SIZE);
   };
@@ -48,7 +49,6 @@ export function PhotoGallery() {
         </p>
       </div>
 
-      {/* Filters */}
       <div
         role="tablist"
         aria-label="Filter photos by category"
@@ -75,7 +75,6 @@ export function PhotoGallery() {
         })}
       </div>
 
-      {/* Mosaic grid */}
       <div className="grid grid-cols-2 gap-3 sm:auto-rows-[180px] sm:grid-cols-4 sm:gap-4">
         {visibleItems.map((item, index) => (
           <button
