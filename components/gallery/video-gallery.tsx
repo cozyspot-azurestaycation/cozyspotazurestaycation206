@@ -80,10 +80,6 @@ export function VideoGallery() {
                   </>
                 )}
               </div>
-              <div className="flex items-center justify-between px-1 py-3">
-                <span className="text-sm font-medium text-[#0B1E3D]">{item.title}</span>
-                <span className="text-xs text-[#1F2A3C]/60">{item.duration}</span>
-              </div>
             </div>
           ))}
         </div>
