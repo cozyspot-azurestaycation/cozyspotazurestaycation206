@@ -1,9 +1,4 @@
 // lib/gallery-data.ts
-//
-// Central source of truth for the Gallery page. To add a new photo or
-// video, just add a new object to the arrays below — no other files
-// need to change.
-
 export type GalleryCategory =
   | "room-amenities"
   | "celebrations"
@@ -18,7 +13,7 @@ export interface GalleryItem {
   src: string;
   alt: string;
   title: string;
-  icon: string; // small emoji shown on the overlay
+  icon: string;
   category: GalleryCategory;
   size: GallerySize;
 }
@@ -41,7 +36,3 @@ export const filterCategories: { label: string; value: FilterValue }[] = [
   { label: "Family", value: "family" },
   { label: "Azure Resort", value: "azure-resort" },
 ];
-
-// Replace `src` with real photos in /public/images/gallery/
-// Keep the same file naming pattern so this list stays easy to scan.
-export
