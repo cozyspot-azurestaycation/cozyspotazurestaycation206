@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  Play,
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -34,6 +35,15 @@ interface GalleryImage {
   alt: string;
   caption: string;
   /** controls masonry sizing – tall images look great mixed with square/wide ones */
+  aspect?: "square" | "portrait" | "wide";
+}
+
+interface GalleryVideo {
+  /** path to the video file, e.g. "/videos/gallery/birthday-tour.mp4" */
+  src: string;
+  /** poster/thumbnail shown before playback, e.g. "/images/gallery/video-thumbs/birthday-tour.jpg" */
+  poster: string;
+  caption: string;
   aspect?: "square" | "portrait" | "wide";
 }
 
@@ -152,6 +162,38 @@ const galleryImages: GalleryImage[] = [
     alt: "View of Azure Urban Resort Residences amenities",
     caption: "The Azure Resort Experience",
     aspect: "square",
+  },
+];
+
+/**
+ * Guest video gallery — room tours, celebration clips, guest reactions.
+ * Add a new video by appending an object here — the video grid and
+ * lightbox pick it up automatically.
+ */
+const galleryVideos: GalleryVideo[] = [
+  {
+    src: "/videos/gallery/room-tour.mp4",
+    poster: "/images/gallery/video-thumbs/room-tour.jpg",
+    caption: "A Quick Tour of the Cozy Spot Unit",
+    aspect: "wide",
+  },
+  {
+    src: "/videos/gallery/birthday-surprise.mp4",
+    poster: "/images/gallery/video-thumbs/birthday-surprise.jpg",
+    caption: "Birthday Surprise Set-Up",
+    aspect: "portrait",
+  },
+  {
+    src: "/videos/gallery/guest-reaction.mp4",
+    poster: "/images/gallery/video-thumbs/guest-reaction.jpg",
+    caption: "Guests Arriving to Their Room",
+    aspect: "square",
+  },
+  {
+    src: "/videos/gallery/night-view.mp4",
+    poster: "/images/gallery/video-thumbs/night-view.jpg",
+    caption: "City Lights at Azure, After Dark",
+    aspect: "wide",
   },
 ];
 
@@ -525,8 +567,173 @@ function GalleryGrid({ images }: { images: GalleryImage[] }) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  TRUST + CTA                                                                */
+/*  VIDEO LIGHTBOX                                                             */
 /* -------------------------------------------------------------------------- */
+
+interface VideoLightboxProps {
+  videos: GalleryVideo[];
+  activeIndex: number;
+  onClose: () => void;
+  onNavigate: (index: number) => void;
+}
+
+function VideoLightbox({
+  videos,
+  activeIndex,
+  onClose,
+  onNavigate,
+}: VideoLightboxProps) {
+  const goNext = useCallback(
+    () => onNavigate((activeIndex + 1) % videos.length),
+    [activeIndex, videos.length, onNavigate]
+  );
+  const goPrev = useCallback(
+    () => onNavigate((activeIndex - 1 + videos.length) % videos.length),
+    [activeIndex, videos.length, onNavigate]
+  );
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [onClose, goNext, goPrev]);
+
+  const video = videos[activeIndex];
+  if (!video) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={video.caption}
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0B1E3D]/95 px-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close video"
+        className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:right-6 sm:top-6"
+      >
+        <X size={22} />
+      </button>
+
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          goPrev();
+        }}
+        aria-label="Previous video"
+        className="absolute left-2 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:left-6"
+      >
+        <ChevronLeft size={22} />
+      </button>
+
+      <div
+        className="relative flex max-h-[80vh] w-full max-w-4xl flex-col items-center"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* key forces the <video> to remount when switching clips, so it doesn't keep playing the old source */}
+        <video
+          key={video.src}
+          src={video.src}
+          poster={video.poster}
+          controls
+          autoPlay
+          className="max-h-[70vh] w-full rounded-xl bg-black"
+        >
+          Your browser does not support embedded video.
+        </video>
+        {video.caption && (
+          <p className="mt-4 text-center text-sm text-white/80 sm:text-base">
+            {video.caption}
+          </p>
+        )}
+      </div>
+
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          goNext();
+        }}
+        aria-label="Next video"
+        className="absolute right-2 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:right-6"
+      >
+        <ChevronRight size={22} />
+      </button>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  VIDEO GRID                                                                 */
+/* -------------------------------------------------------------------------- */
+
+function VideoGrid({ videos }: { videos: GalleryVideo[] }) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  return (
+    <>
+      <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
+        {videos.map((video, index) => (
+          <button
+            key={video.src}
+            type="button"
+            onClick={() => setActiveIndex(index)}
+            aria-label={`Play video: ${video.caption}`}
+            className={`group relative block w-full break-inside-avoid overflow-hidden rounded-2xl ${
+              aspectClass[video.aspect ?? "square"]
+            }`}
+          >
+            <Image
+              src={video.poster}
+              alt={video.caption}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+
+            {/* dark scrim so the play icon and caption stay readable on any thumbnail */}
+            <div className="absolute inset-0 bg-[#0B1E3D]/25 transition-colors duration-300 group-hover:bg-[#0B1E3D]/40" />
+
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-[#0B1E3D] shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <Play size={22} className="ml-0.5 fill-current" />
+              </span>
+            </div>
+
+            <div className="absolute inset-0 flex items-end p-4">
+              <span className="text-left text-sm font-medium text-white">
+                {video.caption}
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {activeIndex !== null && (
+        <VideoLightbox
+          videos={videos}
+          activeIndex={activeIndex}
+          onClose={() => setActiveIndex(null)}
+          onNavigate={setActiveIndex}
+        />
+      )}
+    </>
+  );
+}
+
+
 
 function ReviewsCTA() {
   return (
@@ -616,6 +823,21 @@ export default function ReviewsPage() {
         </div>
 
         <GalleryGrid images={galleryImages} />
+      </section>
+
+      {/* SECTION 2B — GUEST VIDEOS */}
+      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+        <div className="mx-auto mb-10 max-w-2xl text-center">
+          <h2 className="text-2xl font-semibold text-[#0B1E3D] sm:text-3xl">
+            Guest Videos
+          </h2>
+          <p className="mt-3 text-sm text-[#1F2A3C]/70 sm:text-base">
+            Room tours, celebration clips, and candid moments — see Cozy Spot
+            Azure in motion.
+          </p>
+        </div>
+
+        <VideoGrid videos={galleryVideos} />
       </section>
 
       {/* SECTION 3 — TRUST + CTA */}
