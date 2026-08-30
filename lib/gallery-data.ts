@@ -32,16 +32,13 @@ export const filterCategories: { label: string; value: FilterValue }[] = [
   { label: "Azure Resort", value: "azure-resort" },
 ];
 export const galleryItems: GalleryItem[] = [
-  { id: 1, src: "/images/gallery/birthday-surprise.jpg", alt: "Birthday surprise setup in the living room", title: "Birthday Surprise", icon: "🎂", category: "celebrations", size: "large" },
   { id: 2, src: "/images/gallery/azure-beach-view.jpg", alt: "View of Azure Resort's beach and pool area", title: "Azure Beach View", icon: "🌴", category: "azure-resort", size: "medium" },
   { id: 3, src: "/images/gallery/cozy-room.jpg", alt: "Cozy Spot Azure bedroom", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
   { id: 4, src: "/images/gallery/movie-night.jpg", alt: "Guests enjoying a movie night set up", title: "Movie Night", icon: "🍿", category: "family", size: "medium" },
   { id: 5, src: "/images/gallery/romantic-getaway.jpg", alt: "Romantic room setup for couples", title: "Romantic Getaway", icon: "❤️", category: "couples", size: "small" },
-  { id: 6, src: "/images/gallery/anniversary-setup.jpg", alt: "Anniversary celebration decor", title: "Anniversary Setup", icon: "🥂", category: "celebrations", size: "small" },
   { id: 7, src: "/images/gallery/family-bonding.jpg", alt: "Family spending time together in the living room", title: "Family Bonding", icon: "👨‍👩‍👧", category: "family", size: "large" },
   { id: 8, src: "/images/gallery/morning-coffee.jpg", alt: "Morning coffee by the window", title: "Morning Coffee", icon: "☕", category: "room-amenities", size: "small" },
   { id: 9, src: "/images/gallery/azure-resort.jpg", alt: "Azure Urban Resort Residences grounds", title: "Azure Resort", icon: "🏊", category: "azure-resort", size: "medium" },
-  { id: 10, src: "/images/gallery/sweet-celebration.jpg", alt: "Sweet celebration table setup", title: "Sweet Celebration", icon: "🎉", category: "celebrations", size: "small" },
   { id: 11, src: "/images/gallery/night-view.jpg", alt: "Night view from the unit", title: "Night View", icon: "🌙", category: "couples", size: "medium" },
   { id: 12, src: "/images/gallery/Anniversary-decor-01.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "🥂", category: "celebrations", size: "small" },
   { id: 13, src: "/images/gallery/Anniversary-decor-02.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "💐", category: "celebrations", size: "small" },
