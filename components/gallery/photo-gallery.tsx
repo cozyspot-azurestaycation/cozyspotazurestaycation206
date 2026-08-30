@@ -75,23 +75,21 @@ export function PhotoGallery() {
         })}
       </div>
 
-      <div className="grid grid-cols-2 gap-3 sm:auto-rows-[180px] sm:grid-cols-4 sm:gap-4">
-        {visibleItems.map((item, index) => (
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+      {visibleItems.map((item, index) => (
           <button
             key={item.id}
             type="button"
             onClick={() => setLightboxIndex(index)}
             aria-label={`Open photo: ${item.title}`}
-            className={`group relative overflow-hidden rounded-2xl bg-[#0B1E3D]/5 ${sizeClasses[item.size]}`}
-          >
+            className={`group relative aspect-square overflow-hidden rounded-2xl bg-[#0B1E3D]/5`}          >
             <Image
               src={item.src}
               alt={item.alt}
               fill
               sizes="(min-width: 640px) 25vw, 50vw"
               loading="lazy"
-              className="object-contain transition duration-500 ease-out group-hover:scale-110"            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E3D]/80 via-[#0B1E3D]/0 to-transparent opacity-80 transition group-hover:opacity-100" />
+              className="object-cover transition duration-500 ease-out group-hover:scale-110"
             <span className="absolute bottom-3 left-3 flex items-center gap-1.5 text-left text-sm font-medium text-white">
               <span aria-hidden="true">{item.icon}</span>
               {item.title}
