@@ -50,6 +50,20 @@ export const galleryItems: GalleryItem[] = [
   { id: 10, src: "/images/gallery/sweet-celebration.jpg", alt: "Sweet celebration table setup", title: "Sweet Celebration", icon: "🎉", category: "celebrations", size: "small" },
   { id: 11, src: "/images/gallery/night-view.jpg", alt: "Night view from the unit", title: "Night View", icon: "🌙", category: "couples", size: "medium" },
 ];
+export const galleryItems: GalleryItem[] = [
+  // ...existing items (1–11)...
+  { id: 12, src: "/images/gallery/Anniversary-decor-01.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "🥂", category: "celebrations", size: "small" },
+  { id: 13, src: "/images/gallery/Anniversary-decor-02.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "💐", category: "celebrations", size: "small" },
+  { id: 14, src: "/images/gallery/Anniversary-decor-03.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "🕯️", category: "celebrations", size: "small" },
+  { id: 15, src: "/images/gallery/Birthday-decor-01.png", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🎂", category: "celebrations", size: "medium" },
+  { id: 16, src: "/images/gallery/Birthday-decor-02.png", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🎈", category: "celebrations", size: "small" },
+  { id: 17, src: "/images/gallery/Birthday-decor-03.png", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🎉", category: "celebrations", size: "small" },
+  { id: 18, src: "/images/gallery/Birthday-decor-04.png", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🎁", category: "celebrations", size: "small" },
+  { id: 19, src: "/images/gallery/Birthday-decor-05.png", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🎊", category: "celebrations", size: "small" },
+  { id: 20, src: "/images/gallery/Birthday-decor-06.jpeg", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🥳", category: "celebrations", size: "small" },
+  { id: 21, src: "/images/gallery/Birthday-decor-07.jpeg", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🍰", category: "celebrations", size: "small" },
+  { id: 22, src: "/images/gallery/Bridal-Shower-decor-01.png", alt: "Bridal shower celebration decoration setup", title: "Bridal Shower Decor", icon: "👰", category: "celebrations", size: "medium" },
+];
 
 export const videoItems: VideoItem[] = [
   { id: 1, thumbnail: "/videos/Anniversary-01.png", video: "/videos/Anniversary-01.mp4", title: "Anniversary", duration: "00:29" },
