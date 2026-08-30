@@ -8,17 +8,10 @@ import {
   galleryItems,
   filterCategories,
   type FilterValue,
-  type GalleryItem,
 } from "@/lib/gallery-data";
 import { Lightbox } from "./lightbox";
 
 const PAGE_SIZE = 8;
-
-const sizeClasses: Record<GalleryItem["size"], string> = {
-  large: "sm:col-span-2 sm:row-span-2",
-  medium: "sm:col-span-2 sm:row-span-1",
-  small: "sm:col-span-1 sm:row-span-1",
-};
 
 export function PhotoGallery() {
   const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
@@ -76,13 +69,14 @@ export function PhotoGallery() {
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-      {visibleItems.map((item, index) => (
+        {visibleItems.map((item, index) => (
           <button
             key={item.id}
             type="button"
             onClick={() => setLightboxIndex(index)}
             aria-label={`Open photo: ${item.title}`}
-            className={`group relative aspect-square overflow-hidden rounded-2xl bg-[#0B1E3D]/5`}          >
+            className="group relative aspect-square overflow-hidden rounded-2xl bg-[#0B1E3D]/5"
+          >
             <Image
               src={item.src}
               alt={item.alt}
@@ -90,6 +84,7 @@ export function PhotoGallery() {
               sizes="(min-width: 640px) 25vw, 50vw"
               loading="lazy"
               className="object-cover transition duration-500 ease-out group-hover:scale-110"
+            />
             <span className="absolute bottom-3 left-3 flex items-center gap-1.5 text-left text-sm font-medium text-white">
               <span aria-hidden="true">{item.icon}</span>
               {item.title}
