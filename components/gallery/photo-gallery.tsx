@@ -90,8 +90,7 @@ export function PhotoGallery() {
               fill
               sizes="(min-width: 640px) 25vw, 50vw"
               loading="lazy"
-              className="object-cover transition duration-500 ease-out group-hover:scale-110"
-            />
+              className="object-contain transition duration-500 ease-out group-hover:scale-110"            />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E3D]/80 via-[#0B1E3D]/0 to-transparent opacity-80 transition group-hover:opacity-100" />
             <span className="absolute bottom-3 left-3 flex items-center gap-1.5 text-left text-sm font-medium text-white">
               <span aria-hidden="true">{item.icon}</span>
