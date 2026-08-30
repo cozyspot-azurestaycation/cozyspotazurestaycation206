@@ -37,7 +37,6 @@ export const galleryItems: GalleryItem[] = [
   { id: 4, src: "/images/gallery/movie-night.jpg", alt: "Guests enjoying a movie night set up", title: "Movie Night", icon: "🍿", category: "family", size: "medium" },
   { id: 5, src: "/images/gallery/romantic-getaway.jpg", alt: "Romantic room setup for couples", title: "Romantic Getaway", icon: "❤️", category: "couples", size: "small" },
   { id: 7, src: "/images/gallery/family-bonding.jpg", alt: "Family spending time together in the living room", title: "Family Bonding", icon: "👨‍👩‍👧", category: "family", size: "large" },
-  { id: 8, src: "/images/gallery/morning-coffee.jpg", alt: "Morning coffee by the window", title: "Morning Coffee", icon: "☕", category: "room-amenities", size: "small" },
   { id: 9, src: "/images/gallery/azure-resort.jpg", alt: "Azure Urban Resort Residences grounds", title: "Azure Resort", icon: "🏊", category: "azure-resort", size: "medium" },
   { id: 11, src: "/images/gallery/night-view.jpg", alt: "Night view from the unit", title: "Night View", icon: "🌙", category: "couples", size: "medium" },
   { id: 12, src: "/images/gallery/Anniversary-decor-01.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "🥂", category: "celebrations", size: "small" },
@@ -51,6 +50,10 @@ export const galleryItems: GalleryItem[] = [
   { id: 20, src: "/images/gallery/Birthday-decor-06.jpeg", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🥳", category: "celebrations", size: "small" },
   { id: 21, src: "/images/gallery/Birthday-decor-07.jpeg", alt: "Birthday celebration decoration setup", title: "Birthday Decor", icon: "🍰", category: "celebrations", size: "small" },
   { id: 22, src: "/images/gallery/Bridal-Shower-decor-01.png", alt: "Bridal shower celebration decoration setup", title: "Bridal Shower Decor", icon: "👰", category: "celebrations", size: "medium" },
+  { id: 27, src: "/images/gallery/Karaoke.jpg", alt: "Karaoke setup in the unit", title: "Karaoke Night", icon: "🎤", category: "room-amenities", size: "small" },
+  { id: 28, src: "/images/gallery/Board-games.jpg", alt: "Board games available for guests", title: "Board Games", icon: "🎲", category: "room-amenities", size: "small" },
+  { id: 29, src: "/images/gallery/PS4.jpg", alt: "PS4 console and controllers for guests", title: "PS4 Gaming", icon: "🎮", category: "room-amenities", size: "small" },
+  { id: 30, src: "/images/gallery/Board-games-01.jpg", alt: "Board games available for guests", title: "Board Games", icon: "🎯", category: "room-amenities", size: "small" },
 ];
 export const videoItems: VideoItem[] = [
   { id: 1, thumbnail: "/videos/Anniversary-01.png", video: "/videos/Anniversary-01.mp4", title: "Anniversary", duration: "00:29" },
