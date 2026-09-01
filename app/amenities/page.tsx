@@ -5,14 +5,14 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: `Amenities | ${siteConfig.shortName}`,
   description:
-    "Explore the resort-style amenities at Azure Urban Resort Residences in Parañaque — man-made beach, lap pool, wave pool, gym, basketball & tennis courts, and more, all steps from Cozy Spot Azure.",
+    "Explore the resort-style amenities at Azure Urban Resort Residences in Parañaque — man-made beach pool, wave pool, gym, sports courts, dining, and more, all steps from Cozy Spot Azure.",
   alternates: {
     canonical: `${siteConfig.url}/amenities`,
   },
   openGraph: {
     title: `Amenities | ${siteConfig.shortName}`,
     description:
-      "Resort-style amenities at Azure Urban Resort Residences, Parañaque — man-made beach, pools, gym, sports courts, and more.",
+      "Resort-style amenities at Azure Urban Resort Residences, Parañaque — pools, gym, sports courts, dining, and more.",
     url: `${siteConfig.url}/amenities`,
     siteName: siteConfig.name,
     type: "website",
@@ -32,12 +32,18 @@ const amenityGroups: AmenityGroup[] = [
   {
     title: "Resort & Leisure",
     items: [
-      { name: "Man-made beach", note: "The Philippines' first" },
+      { name: "Man-made Beach Pool", note: "The Philippines' first" },
       { name: "Lap pool with cascading waterfall" },
-      { name: "Infinity wave pool" },
-      { name: "Children's pool" },
-      { name: "Poolside bar" },
-      { name: "Roof deck garden" },
+      {
+        name: "Infinity wave pool",
+        note: "Paid separately via visitor's pass — not included in the staycation rate",
+      },
+      { name: "Kiddy Pool & Playground" },
+      { name: "The Sands Bar", note: "Poolside bar" },
+      {
+        name: "Roof deck garden",
+        note: "Accessible during certain hours, under security supervision",
+      },
     ],
   },
   {
@@ -54,10 +60,14 @@ const amenityGroups: AmenityGroup[] = [
   },
   {
     title: "Family & Entertainment",
+    items: [{ name: "Multiple playgrounds" }, { name: "Game room" }],
+  },
+  {
+    title: "Dining & Convenience",
     items: [
-      { name: "Multiple playgrounds" },
-      { name: "Game room" },
-      { name: "Kiddie water slide" },
+      { name: "Restaurants", note: "Within Azure Urban Resort Residences" },
+      { name: "Convenience stores", note: "Within Azure Urban Resort Residences" },
+      { name: "Fast food outlets", note: "Just outside Azure premises" },
     ],
   },
   {
@@ -69,6 +79,13 @@ const amenityGroups: AmenityGroup[] = [
       { name: "Secure parking", note: "Fee applies" },
     ],
   },
+];
+
+const disclaimerItems = [
+  "These are separate from what's inside the unit. Pool access is paid directly at the property with a visitor's pass and is not part of the staycation rate.",
+  "Wave pool access is paid separately at Azure's pool cashier with a visitor's pass — it is not included in the staycation rate.",
+  "The rooftop deck is accessible with security personnel supervision during certain hours only.",
+  "Amenity access may change based on Azure Urban Resort Residences management policies, scheduled maintenance, or special events. Confirm pool schedules with your host before arrival.",
 ];
 
 const jsonLd = {
@@ -100,17 +117,60 @@ const jsonLd = {
       "@type": "LocationFeatureSpecification",
       name: item.name,
       value: true,
+      ...(item.note ? { description: item.note } : {}),
     }))
   ),
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity": undefined, // placeholder removed below
+};
+
 export default function AmenitiesPage() {
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is pool access included in the Cozy Spot Azure staycation rate?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Pool access at Azure Urban Resort Residences, including the wave pool, is paid separately at the property using a visitor's pass and is not part of the staycation rate.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can guests access the rooftop deck at Azure Urban Resort Residences?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, but only during certain hours and under the supervision of security personnel.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can amenity access change at Azure Urban Resort Residences?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Amenity access may change based on management policies, scheduled maintenance, or special events. Guests should confirm pool schedules with their host before arrival.",
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
 
       <main className="bg-ivory">
@@ -129,6 +189,37 @@ export default function AmenitiesPage() {
               access to a full resort-style amenity lineup, from a man-made
               beach to a rooftop garden.
             </p>
+          </div>
+        </section>
+
+        {/* Disclaimer */}
+        <section className="px-5 pt-12">
+          <div className="mx-auto max-w-6xl">
+            <aside
+              role="note"
+              aria-labelledby="amenities-disclaimer-heading"
+              className="rounded-2xl border border-brass/30 bg-linen px-6 py-6 md:px-8 md:py-7"
+            >
+              <h2
+                id="amenities-disclaimer-heading"
+                className="font-display text-lg font-medium text-navy"
+              >
+                Good to Know Before You Book
+              </h2>
+              <ul className="mt-4 space-y-2.5">
+                {disclaimerItems.map((text) => (
+                  <li
+                    key={text}
+                    className="flex gap-2.5 text-[13.5px] leading-relaxed text-ink/75"
+                  >
+                    <span aria-hidden="true" className="mt-0.5 text-brass">
+                      ✦
+                    </span>
+                    <span>{text}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
           </div>
         </section>
 
