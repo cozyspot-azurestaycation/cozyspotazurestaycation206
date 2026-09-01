@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { BreadcrumbJsonLd } from "@/components/json-ld";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "What's Included — Cozy Spot Azure Staycation",
   description:
     "Everything included in your stay at Cozy Spot Azure — room amenities, entertainment, kitchenware — plus wave pool and parking fees to plan around.",
+  alternates: {
+    canonical: "/unit-inclusions",
+  },
 };
 
 const roomInclusions: string[] = [
@@ -69,6 +74,18 @@ const exclusions: Exclusion[] = [
 export default function InclusionsPage() {
   return (
     <section className="bg-navy text-ivory">
+      <BreadcrumbJsonLd
+        items={[
+          {
+            name: "Home",
+            url: siteConfig.url,
+          },
+          {
+            name: "What's Included",
+            url: `${siteConfig.url}/unit-inclusions`,
+          },
+        ]}
+      />
 
       {/* Hero image */}
       <div className="relative h-[46vh] w-full overflow-hidden sm:h-[56vh]">
