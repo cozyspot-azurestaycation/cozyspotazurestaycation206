@@ -122,9 +122,6 @@ const jsonLd = {
   ),
 };
 
-
-};
-
 export default function AmenitiesPage() {
   const faqLd = {
     "@context": "https://schema.org",
