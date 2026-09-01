@@ -53,11 +53,23 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     locale: "en_PH",
+    // Explicitly declared instead of relying only on Next's auto-detection
+    // of app/opengraph-image.tsx — some chat-app link crawlers (Viber, etc.)
+    // don't reliably pick up the auto-injected tag.
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — ${siteConfig.tagline}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
