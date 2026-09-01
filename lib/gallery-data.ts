@@ -34,8 +34,6 @@ export const galleryItems: GalleryItem[] = [
   { id: 31, src: "/images/gallery/cozy-room-02.png", alt: "Cozy Spot Azure bedroom view 2", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
   { id: 32, src: "/images/gallery/cozy-room-03.png", alt: "Cozy Spot Azure bedroom view 3", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
   { id: 33, src: "/images/gallery/cozy-room-04.png", alt: "Cozy Spot Azure bedroom view 4", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
-  { id: 4, src: "/images/gallery/movie-night.jpg", alt: "Guests enjoying a movie night set up", title: "Movie Night", icon: "🍿", category: "family", size: "medium" },
-  { id: 7, src: "/images/gallery/family-bonding.jpg", alt: "Family spending time together in the living room", title: "Family Bonding", icon: "👨‍👩‍👧", category: "family", size: "large" },
   { id: 38, src: "/images/gallery/Azure-guest-picture-01.png", alt: "Family bonding moment with guests", title: "Family Bonding", icon: "👨‍👩‍👧", category: "family", size: "small" },
   { id: 39, src: "/images/gallery/Azure-guest-picture-02.png", alt: "Family bonding moment with guests", title: "Family Bonding", icon: "👨‍👩‍👧", category: "family", size: "small" },
   { id: 40, src: "/images/gallery/Azure-guest-picture-03.png", alt: "Family bonding moment with guests", title: "Family Bonding", icon: "👨‍👩‍👧", category: "family", size: "small" },
