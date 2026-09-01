@@ -122,10 +122,7 @@ const jsonLd = {
   ),
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity": undefined, // placeholder removed below
+
 };
 
 export default function AmenitiesPage() {
