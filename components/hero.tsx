@@ -73,7 +73,11 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-linen/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] sm:text-base sm:text-linen/75">
+        <p className="mt-4 max-w-xl text-lg font-medium text-linen/95 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] sm:text-xl">
+          Your spot for a cozy and relaxing staycation.
+        </p>
+
+        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-linen/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] sm:text-base sm:text-linen/75">
           A comfortable private staycation space near the airport, designed
           for relaxation, quality time, and intimate celebrations. Perfect for
           couples, families, and small groups looking for a convenient place
