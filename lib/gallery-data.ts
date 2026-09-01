@@ -33,7 +33,10 @@ export const filterCategories: { label: string; value: FilterValue }[] = [
 ];
 export const galleryItems: GalleryItem[] = [
   { id: 2, src: "/images/gallery/azure-beach-view.jpg", alt: "View of Azure Resort's beach and pool area", title: "Azure Beach View", icon: "🌴", category: "azure-resort", size: "medium" },
-  { id: 3, src: "/images/gallery/cozy-room.jpg", alt: "Cozy Spot Azure bedroom", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
+  { id: 3, src: "/images/gallery/cozy-room-01.png", alt: "Cozy Spot Azure bedroom view 1", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
+  { id: 31, src: "/images/gallery/cozy-room-02.png", alt: "Cozy Spot Azure bedroom view 2", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
+  { id: 32, src: "/images/gallery/cozy-room-03.png", alt: "Cozy Spot Azure bedroom view 3", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
+  { id: 33, src: "/images/gallery/cozy-room-04.png", alt: "Cozy Spot Azure bedroom view 4", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
   { id: 4, src: "/images/gallery/movie-night.jpg", alt: "Guests enjoying a movie night set up", title: "Movie Night", icon: "🍿", category: "family", size: "medium" },
   { id: 5, src: "/images/gallery/romantic-getaway.jpg", alt: "Romantic room setup for couples", title: "Romantic Getaway", icon: "❤️", category: "couples", size: "small" },
   { id: 7, src: "/images/gallery/family-bonding.jpg", alt: "Family spending time together in the living room", title: "Family Bonding", icon: "👨‍👩‍👧", category: "family", size: "large" },
