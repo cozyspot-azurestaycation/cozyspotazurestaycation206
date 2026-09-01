@@ -2,7 +2,6 @@
 export type GalleryCategory =
   | "room-amenities"
   | "celebrations"
-  | "couples"
   | "family"
   | "azure-resort";
 export type GallerySize = "large" | "medium" | "small";
@@ -27,7 +26,6 @@ export const filterCategories: { label: string; value: FilterValue }[] = [
   { label: "All", value: "all" },
   { label: "Room & Amenities", value: "room-amenities" },
   { label: "Celebrations", value: "celebrations" },
-  { label: "Couples", value: "couples" },
   { label: "Family", value: "family" },
   { label: "Azure Resort", value: "azure-resort" },
 ];
@@ -37,13 +35,11 @@ export const galleryItems: GalleryItem[] = [
   { id: 32, src: "/images/gallery/cozy-room-03.png", alt: "Cozy Spot Azure bedroom view 3", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
   { id: 33, src: "/images/gallery/cozy-room-04.png", alt: "Cozy Spot Azure bedroom view 4", title: "Cozy Room", icon: "🛏️", category: "room-amenities", size: "small" },
   { id: 4, src: "/images/gallery/movie-night.jpg", alt: "Guests enjoying a movie night set up", title: "Movie Night", icon: "🍿", category: "family", size: "medium" },
-  { id: 5, src: "/images/gallery/romantic-getaway.jpg", alt: "Romantic room setup for couples", title: "Romantic Getaway", icon: "❤️", category: "couples", size: "small" },
   { id: 7, src: "/images/gallery/family-bonding.jpg", alt: "Family spending time together in the living room", title: "Family Bonding", icon: "👨‍👩‍👧", category: "family", size: "large" },
   { id: 34, src: "/images/gallery/Azure-beach-view-01.png", alt: "Azure Resort beach view", title: "Azure Beach View", icon: "🌴", category: "azure-resort", size: "medium" },
   { id: 35, src: "/images/gallery/Azure-kids-playground.png", alt: "Azure Resort kids playground", title: "Kids Playground", icon: "🛝", category: "azure-resort", size: "small" },
   { id: 36, src: "/images/gallery/Azure-beach-night-view-balcony-01.png", alt: "Night view of Azure Resort beach from the balcony", title: "Night View from Balcony", icon: "🌙", category: "azure-resort", size: "small" },
   { id: 37, src: "/images/gallery/Azure-beach-morning-view-balcony-02.png", alt: "Morning view of Azure Resort beach from the balcony", title: "Morning View from Balcony", icon: "🌅", category: "azure-resort", size: "small" },
-  { id: 11, src: "/images/gallery/night-view.jpg", alt: "Night view from the unit", title: "Night View", icon: "🌙", category: "couples", size: "medium" },
   { id: 12, src: "/images/gallery/Anniversary-decor-01.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "🥂", category: "celebrations", size: "small" },
   { id: 13, src: "/images/gallery/Anniversary-decor-02.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "💐", category: "celebrations", size: "small" },
   { id: 14, src: "/images/gallery/Anniversary-decor-03.png", alt: "Anniversary celebration decoration setup", title: "Anniversary Decor", icon: "🕯️", category: "celebrations", size: "small" },
