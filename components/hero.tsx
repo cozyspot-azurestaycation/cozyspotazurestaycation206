@@ -57,12 +57,20 @@ export function Hero() {
       {/* Hero content — extra bottom padding on mobile keeps the CTAs
           clear of the fixed sticky "Book Now" bar. */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-28 pt-32 sm:pb-20">
-        <p className="eyebrow mb-5 text-azure-soft drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
-          Azure Urban Resort, Parañaque · Private Staycation
-        </p>
-
-        <h1 className="max-w-3xl font-display text-[12vw] font-medium leading-[0.98] text-linen drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:text-6xl md:text-7xl">
-          {siteConfig.tagline}
+        {/* Combined into a single <h1>: the small keyword-rich line
+            (Azure Urban Resort, Parañaque · Private Staycation) plus the
+            large stylized tagline. Previously the tagline alone was the
+            H1 and carried no location/business keywords — this keeps the
+            exact same visual look (two lines, same sizes/colors) but gives
+            search engines and AI crawlers the actual keyword context in
+            the page's single most important heading. */}
+        <h1 className="max-w-3xl">
+          <span className="eyebrow mb-5 block text-azure-soft drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)]">
+            Azure Urban Resort, Parañaque · Private Staycation
+          </span>
+          <span className="block font-display text-[12vw] font-medium leading-[0.98] text-linen drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)] sm:text-6xl md:text-7xl">
+            {siteConfig.tagline}
+          </span>
         </h1>
 
         <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-linen/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)] sm:text-base sm:text-linen/75">
