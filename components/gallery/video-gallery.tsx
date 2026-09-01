@@ -88,7 +88,7 @@ export function VideoGallery() {
           type="button"
           onClick={() => scrollBy("right")}
           aria-label="Scroll videos right"
-          className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white p-2 text-[#0B1E3D] shadow-md transition hover:bg-[#0B1E3D] hover:text-white sm:right-6"
+          className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white p-2 text-[#0B1E3D] shadow-md transition hover:bg-[#0B1E3D] hover:text-white sm:right-6 sm:flex"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
