@@ -5,14 +5,14 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: `Amenities | ${siteConfig.shortName}`,
   description:
-    "Explore the resort-style amenities at Azure Urban Resort Residences in Parañaque — man-made beach pool, wave pool, gym, sports courts, dining, and more, all steps from Cozy Spot Azure.",
+    "Explore the resort-style amenities at Azure Urban Resort Residences in Parañaque — man-made beach pool, kiddy pool, poolside bar, roof deck, dining, and more, all steps from Cozy Spot Azure.",
   alternates: {
     canonical: `${siteConfig.url}/amenities`,
   },
   openGraph: {
     title: `Amenities | ${siteConfig.shortName}`,
     description:
-      "Resort-style amenities at Azure Urban Resort Residences, Parañaque — pools, gym, sports courts, dining, and more.",
+      "Resort-style amenities at Azure Urban Resort Residences, Parañaque — pools, dining, and more.",
     url: `${siteConfig.url}/amenities`,
     siteName: siteConfig.name,
     type: "website",
@@ -33,11 +33,6 @@ const amenityGroups: AmenityGroup[] = [
     title: "Resort & Leisure",
     items: [
       { name: "Man-made Beach Pool", note: "The Philippines' first" },
-      { name: "Lap pool with cascading waterfall" },
-      {
-        name: "Infinity wave pool",
-        note: "Paid separately via visitor's pass — not included in the staycation rate",
-      },
       { name: "Kiddy Pool & Playground" },
       { name: "The Sands Bar", note: "Poolside bar" },
       {
@@ -45,22 +40,6 @@ const amenityGroups: AmenityGroup[] = [
         note: "Accessible during certain hours, under security supervision",
       },
     ],
-  },
-  {
-    title: "Sports & Recreation",
-    items: [
-      { name: "Basketball court" },
-      { name: "Tennis court" },
-      { name: "Beach volleyball court" },
-    ],
-  },
-  {
-    title: "Wellness",
-    items: [{ name: "Fitness gym" }, { name: "Zen garden" }],
-  },
-  {
-    title: "Family & Entertainment",
-    items: [{ name: "Multiple playgrounds" }, { name: "Game room" }],
   },
   {
     title: "Dining & Convenience",
@@ -180,8 +159,8 @@ export default function AmenitiesPage() {
             <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-linen/75">
               {siteConfig.shortName} sits inside Azure Urban Resort
               Residences in Parañaque, Metro Manila — giving every guest
-              access to a full resort-style amenity lineup, from a man-made
-              beach to a rooftop garden.
+              access to a resort-style amenity lineup, from a man-made beach
+              to a rooftop garden.
             </p>
           </div>
         </section>
