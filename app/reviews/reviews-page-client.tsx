@@ -742,36 +742,6 @@ export function ReviewsPageClient() {
         <ReviewsCarousel reviews={reviews} />
       </section>
 
-      {/* SECTION 2 — MOMENTS AT COZY SPOT */}
-      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-        <div className="mx-auto mb-10 max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold text-[#0B1E3D] sm:text-3xl">
-            Moments at Cozy Spot
-          </h2>
-          <p className="mt-3 text-sm text-[#1F2A3C]/70 sm:text-base">
-            Little moments, special celebrations, and unforgettable memories
-            shared by our wonderful guests.
-          </p>
-        </div>
-
-        <GalleryGrid images={galleryImages} />
-      </section>
-
-      {/* SECTION 2B — GUEST VIDEOS */}
-      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-        <div className="mx-auto mb-10 max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold text-[#0B1E3D] sm:text-3xl">
-            Guest Videos
-          </h2>
-          <p className="mt-3 text-sm text-[#1F2A3C]/70 sm:text-base">
-            Room tours, celebration clips, and candid moments — see Cozy Spot
-            Azure in motion.
-          </p>
-        </div>
-
-        <VideoGrid videos={galleryVideos} />
-      </section>
-
       {/* SECTION 3 — TRUST + CTA */}
       <section className="mx-auto max-w-6xl px-6 pb-20">
         <ReviewsCTA />
