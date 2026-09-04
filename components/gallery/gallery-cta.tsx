@@ -1,8 +1,6 @@
 // components/gallery/gallery-cta.tsx
-
 import { Sparkles } from "lucide-react";
 import Link from "next/link";
-
 export function GalleryCTA() {
   return (
     <section className="mx-auto max-w-6xl px-6 pb-20 sm:pb-28">
@@ -24,13 +22,13 @@ export function GalleryCTA() {
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
-            href="#book-now"
+            href="/#book"
             className="inline-flex items-center justify-center rounded-full bg-[#C9A227] px-7 py-3 text-sm font-semibold text-[#0B1E3D] transition hover:bg-[#dab948]"
           >
             Book Your Stay
           </Link>
           <Link
-            href="/#stay"
+            href="/amenities"
             className="inline-flex items-center justify-center rounded-full border border-[#C9A227]/60 px-7 py-3 text-sm font-semibold text-[#C9A227] transition hover:bg-[#C9A227]/10"
           >
             View Our Amenities
