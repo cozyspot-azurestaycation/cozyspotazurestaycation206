@@ -742,6 +742,56 @@ export function ReviewsPageClient() {
         <ReviewsCarousel reviews={reviews} />
       </section>
 
+      {/*
+        All Guest Reviews — a plain, always-rendered list of every review.
+        The carousel above only puts its *current* slide's text into the
+        initial HTML (it's driven by React state), so this section makes
+        sure all reviews are present for search engines and AI crawlers,
+        not just whichever one the carousel happens to show first.
+      */}
+      <section className="mx-auto max-w-6xl px-6 pb-16 sm:pb-20">
+        <h2 className="text-2xl font-semibold text-[#0B1E3D] sm:text-3xl">
+          All Guest Reviews
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#1F2A3C]/70 sm:text-base">
+          Every review shared by guests who stayed at Cozy Spot Azure inside
+          Azure Urban Resort Residences, Parañaque.
+        </p>
+
+        <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {reviews.map((review) => (
+            <li
+              key={`${review.name}-${review.date}-all`}
+              className="rounded-2xl border border-[#0B1E3D]/10 bg-[#FBF9F4] px-6 py-6"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <span className="inline-block rounded-full bg-[#0B1E3D]/5 px-3 py-1 text-xs font-medium text-[#0B1E3D]">
+                  {review.stayType}
+                </span>
+                <span
+                  aria-label={`${review.rating} out of 5 stars`}
+                  className="text-sm tracking-[0.15em] text-[#C9A227]"
+                >
+                  {"★".repeat(review.rating)}
+                  {"☆".repeat(5 - review.rating)}
+                </span>
+              </div>
+
+              <p className="mt-4 text-[15px] leading-relaxed text-[#1F2A3C]/85">
+                &ldquo;{review.review}&rdquo;
+              </p>
+
+              <div className="mt-5 flex items-center justify-between border-t border-[#0B1E3D]/10 pt-4">
+                <span className="text-sm font-medium text-[#0B1E3D]">
+                  {review.name}
+                </span>
+                <span className="text-xs text-[#1F2A3C]/50">{review.date}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       {/* SECTION 3 — TRUST + CTA */}
       <section className="mx-auto max-w-6xl px-6 pb-20">
         <ReviewsCTA />
