@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
+import { FeaturedArticle } from "@/components/blog/featured-article";
 
 export const metadata: Metadata = {
   title: `Blog | ${siteConfig.shortName}`,
@@ -40,6 +41,8 @@ export default function BlogPage() {
           </p>
         </header>
       </section>
+
+      <FeaturedArticle />
     </main>
   );
 }
