@@ -216,7 +216,7 @@ export default function InclusionsPage() {
               </Link>
 
               <Link
-                href="/#booking"
+                href="/#book"
                 className="inline-flex rounded-full bg-gold px-7 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-lg"
               >
                 Book Now
