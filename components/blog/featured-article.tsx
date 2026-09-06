@@ -1,12 +1,14 @@
 import Link from "next/link";
 
 /**
- * Two large editorial "Featured Story" cards, shown directly beneath the
- * blog hero. No article grid or category filters yet — that comes later.
+ * Blog article cards, shown beneath the blog hero, laid out as a
+ * responsive grid (3-up on desktop, matching the reference layout:
+ * thumbnail on top, date, bold title, excerpt).
  *
- * Images are placeholders. Upload the real photos to public/images/blog/
- * using the same filenames below (matching the gallery workflow), and
- * these will render automatically — no code change needed.
+ * Thumbnails are a navy-to-azure gradient placeholder for now. Once real
+ * cover photos are uploaded to public/images/blog/ (same filenames
+ * already set in `image.src` below), swap the gradient div back for an
+ * <Image> using that path — no other changes needed.
  */
 const featuredArticles = [
   {
@@ -44,51 +46,55 @@ export function FeaturedArticle() {
       aria-labelledby="featured-stories-heading"
       className="bg-ivory px-5 py-16 sm:py-20"
     >
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <p id="featured-stories-heading" className="eyebrow text-navy/50">
           Featured Stories
         </p>
 
-        <div className="mt-6 space-y-10 sm:space-y-14">
+        <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {featuredArticles.map((post) => (
             <article
               key={post.href}
-              className="overflow-hidden rounded-3xl border border-navy/10 bg-linen sm:grid sm:grid-cols-2"
+              className="flex flex-col overflow-hidden rounded-3xl border border-navy/10 bg-linen"
             >
-              {/* Medium landscape cover image */}
-              <div className="h-56 w-full overflow-hidden bg-navy sm:h-full">
-                <img
-                  src={post.image.src}
-                  alt={post.image.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
+              {/* Gradient placeholder thumbnail — swap for a real cover photo later */}
+              <div
+                aria-hidden="true"
+                className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-navy to-azure"
+              >
+                <span className="font-display text-sm font-medium uppercase tracking-[0.2em] text-linen/50">
+                  Cozy Spot Azure
+                </span>
               </div>
 
-              <div className="flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10">
+              <div className="flex flex-1 flex-col px-6 py-6 sm:px-7 sm:py-7">
                 <span className="eyebrow text-brass">{post.category}</span>
 
-                <h2 className="mt-4 font-display text-2xl font-medium leading-tight text-navy sm:text-3xl">
+                <p className="mt-3 text-xs font-medium uppercase tracking-wide text-ink/40">
+                  {post.updated}
+                </p>
+
+                <h2 className="mt-3 font-display text-xl font-medium leading-tight text-navy sm:text-2xl">
                   {post.title}
                 </h2>
 
-                <p className="mt-3 text-sm leading-relaxed text-ink/70 sm:text-[15px]">
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/70">
                   {post.excerpt}
                 </p>
 
-                <div className="mt-5 flex items-center gap-2 text-xs font-medium uppercase tracking-wide text-ink/40">
-                  <span>{post.readTime}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{post.updated}</span>
-                </div>
+                <div className="mt-5 flex items-center justify-between">
+                  <span className="text-xs font-medium uppercase tracking-wide text-ink/40">
+                    {post.readTime}
+                  </span>
 
-                <Link
-                  href={post.href}
-                  className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-medium text-brass transition-colors hover:text-navy"
-                >
-                  Read Guide
-                  <span aria-hidden="true">→</span>
-                </Link>
+                  <Link
+                    href={post.href}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-brass transition-colors hover:text-navy"
+                  >
+                    Read Guide
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
               </div>
             </article>
           ))}
