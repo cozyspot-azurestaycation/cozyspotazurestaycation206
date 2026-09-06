@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { createElement } from "react";
 import type { Metadata } from "next";
 import { compileMDX } from "next-mdx-remote/rsc";
@@ -172,12 +173,14 @@ export default async function BlogPostPage({
 
         {post.image.src && (
           <div className="mx-auto max-w-4xl px-5">
-            <div className="overflow-hidden rounded-3xl bg-navy">
-              <img
+            <div className="relative h-64 w-full overflow-hidden rounded-3xl bg-navy sm:h-96">
+              <Image
                 src={post.image.src}
                 alt={post.image.alt}
-                loading="eager"
-                className="h-64 w-full object-cover sm:h-96"
+                fill
+                priority
+                sizes="(min-width: 1024px) 896px, 100vw"
+                className="object-cover"
               />
             </div>
           </div>
