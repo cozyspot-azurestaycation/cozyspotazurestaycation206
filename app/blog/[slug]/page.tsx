@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { createElement } from "react";
 import type { Metadata } from "next";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
@@ -89,14 +90,19 @@ export default async function BlogPostPage({
         />
       ),
       li: (props) => <li {...props} />,
-      a: (props) => (
-        
-          className="text-brass underline-offset-2 hover:underline"
-          {...props}
-        />
-      ),
+      a: (props) =>
+        createElement("a", {
+          className: "text-brass underline-offset-2 hover:underline",
+          ...props,
+        }),
       strong: (props) => (
         <strong className="font-semibold text-navy" {...props} />
+      ),
+      blockquote: (props) => (
+        <blockquote
+          className="mt-6 rounded-2xl border-l-4 border-brass bg-navy/5 px-5 py-4 text-[15px] italic leading-relaxed text-ink/80 sm:text-base"
+          {...props}
+        />
       ),
     },
   });
