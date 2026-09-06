@@ -1,31 +1,192 @@
-{
-  "name": "cozy-spot-azure-staycation",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "14.2.5",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "lucide-react": "^0.454.0",
-    "qrcode.react": "^4.1.0",
-    "gray-matter": "^4.0.3",
-    "reading-time": "^1.5.0",
-    "next-mdx-remote": "^5.0.0",
-    "remark-gfm": "^4.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "20.14.9",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
-    "autoprefixer": "10.4.19",
-    "postcss": "8.4.39",
-    "tailwindcss": "3.4.4",
-    "typescript": "5.5.3"
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import type { Metadata } from "next";
+import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import { siteConfig } from "@/lib/site-config";
+import { getAllSlugs, getPostBySlug } from "@/lib/blog";
+
+export async function generateStaticParams() {
+  return getAllSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const post = getPostBySlug(params.slug);
+
+  if (!post) {
+    return {};
   }
+
+  return {
+    title: `${post.title} | ${siteConfig.shortName}`,
+    description: post.excerpt,
+    alternates: {
+      canonical: `${siteConfig.url}/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      url: `${siteConfig.url}/blog/${post.slug}`,
+      images: post.image.src
+        ? [{ url: `${siteConfig.url}${post.image.src}` }]
+        : undefined,
+    },
+  };
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = getPostBySlug(params.slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  const { content } = await compileMDX({
+    source: post.content,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
+    },
+    components: {
+      h2: (props) => (
+        <h2
+          className="mt-10 font-display text-2xl font-medium leading-snug text-navy sm:text-3xl"
+          {...props}
+        />
+      ),
+      h3: (props) => (
+        <h3
+          className="mt-8 font-display text-xl font-medium leading-snug text-navy"
+          {...props}
+        />
+      ),
+      p: (props) => (
+        <p
+          className="mt-4 text-[15px] leading-relaxed text-ink/80 sm:text-base"
+          {...props}
+        />
+      ),
+      ul: (props) => (
+        <ul
+          className="mt-4 list-disc space-y-2 pl-5 text-[15px] leading-relaxed text-ink/80 sm:text-base"
+          {...props}
+        />
+      ),
+      ol: (props) => (
+        <ol
+          className="mt-4 list-decimal space-y-2 pl-5 text-[15px] leading-relaxed text-ink/80 sm:text-base"
+          {...props}
+        />
+      ),
+      li: (props) => <li {...props} />,
+      a: (props) => (
+        
+          className="text-brass underline-offset-2 hover:underline"
+          {...props}
+        />
+      ),
+      strong: (props) => (
+        <strong className="font-semibold text-navy" {...props} />
+      ),
+      blockquote: (props) => (
+        <blockquote
+          className="mt-6 rounded-2xl border-l-4 border-brass bg-navy/5 px-5 py-4 text-[15px] italic leading-relaxed text-ink/80 sm:text-base"
+          {...props}
+        />
+      ),
+    },
+  });
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image.src ? `${siteConfig.url}${post.image.src}` : undefined,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.shortName,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.shortName,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteConfig.url}/blog/${post.slug}`,
+    },
+  };
+
+  return (
+    <main className="bg-navy">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <article>
+        <header className="px-5 pb-14 pt-24 text-center sm:pt-32">
+          <div className="mx-auto max-w-3xl">
+            <p className="eyebrow text-azure-soft">
+              <Link href="/blog" className="transition-colors hover:text-linen">
+                Blog &amp; Local Guides
+              </Link>
+              <span aria-hidden="true" className="mx-2 text-linen/30">
+                /
+              </span>
+              {post.category}
+            </p>
+
+            <h1 className="mt-5 font-display text-3xl font-medium leading-tight tracking-tight text-linen sm:text-5xl md:text-6xl">
+              {post.title}
+            </h1>
+
+            <div className="mt-6 flex items-center justify-center gap-2 text-xs font-medium uppercase tracking-wide text-linen/50">
+              <span>{post.readTime}</span>
+              <span aria-hidden="true">·</span>
+              <span>{post.updated}</span>
+            </div>
+          </div>
+        </header>
+
+        {post.image.src && (
+          <div className="mx-auto max-w-4xl px-5">
+            <div className="overflow-hidden rounded-3xl bg-navy">
+              <img
+                src={post.image.src}
+                alt={post.image.alt}
+                loading="eager"
+                className="h-64 w-full object-cover sm:h-96"
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="bg-ivory px-5 py-16 sm:py-20">
+          <div className="mx-auto max-w-2xl">{content}</div>
+
+          <div className="mx-auto mt-14 max-w-2xl border-t border-navy/10 pt-10 text-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 text-sm font-medium text-brass transition-colors hover:text-navy"
+            >
+              ← Back to Blog &amp; Local Guides
+            </Link>
+          </div>
+        </div>
+      </article>
+    </main>
+  );
 }
