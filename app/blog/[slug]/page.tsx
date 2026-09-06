@@ -107,6 +107,15 @@ export default async function BlogPostPage({
     },
   });
 
+  // dateModified should reflect real edits, not just mirror datePublished.
+  // `post.updated` is sometimes a loose display string (e.g. "September 2026")
+  // rather than a strict date, so only use it if it actually parses —
+  // otherwise fall back to the publish date rather than emitting invalid JSON-LD.
+  const parsedUpdated = new Date(post.updated);
+  const dateModified = Number.isNaN(parsedUpdated.getTime())
+    ? post.date
+    : parsedUpdated.toISOString();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -114,7 +123,7 @@ export default async function BlogPostPage({
     description: post.excerpt,
     image: post.image.src ? `${siteConfig.url}${post.image.src}` : undefined,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified,
     author: {
       "@type": "Organization",
       name: siteConfig.shortName,
